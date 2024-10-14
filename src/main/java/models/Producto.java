@@ -2,18 +2,23 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
+
 package models;
 
 /**
  *
  * @author egarm
  */
-public class Producto {
+
+public class Producto  {
+    
     private int id;
     private String name;
     private int stock;
     private int segmentoId; // Relación con Segmento
 
+    public Producto(){}
+    
     public Producto(int id, String name, int stock, int segmentoId) {
         this.id = id;
         this.name = name;
@@ -52,4 +57,5 @@ public class Producto {
     public void setSegmentoId(int segmentoId) {
         this.segmentoId = segmentoId;
     }
+
 }

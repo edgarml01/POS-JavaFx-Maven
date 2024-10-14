@@ -8,12 +8,12 @@
 <?import javafx.scene.effect.Blend?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" prefHeight="476.0" prefWidth="269.0" spacing="20.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.mavenproject2.PrimaryController">
+<VBox alignment="CENTER" prefHeight="524.0" prefWidth="337.0" spacing="20.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.mavenproject2.PrimaryController">
    <children>
       <Label id="name" fx:id="name" text="LOGIN" />
-      <MFXTextField fx:id="textlbl" floatingText="Nombre" prefHeight="25.0" prefWidth="229.0" />
+      <MFXTextField fx:id="textlbl" floatingText="Nombre" prefHeight="25.0" prefWidth="229.0" style="-fx-background-radius: 6;" />
       <MFXPasswordField fx:id="pswLbl" floatingText="Password" prefHeight="49.0" prefWidth="231.0" />
-      <Button fx:id="primaryButton" onAction="#switchToSecondary" prefHeight="25.0" prefWidth="84.0" text="Accept" textAlignment="CENTER">
+      <Button fx:id="primaryButton" onAction="#switchToSecondary" prefHeight="8.0" prefWidth="84.0" style="-fx-background-radius: 50; -fx-alignment: center;" text="Accept" textAlignment="CENTER">
          <effect>
             <Blend />
          </effect></Button>
