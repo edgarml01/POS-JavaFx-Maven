@@ -10,13 +10,13 @@ package models;
  */
 public class DetalleVenta {
  
-      private int id;
-    private int ventaId;
-    private int productoId;
+    private int id;
+    private Venta ventaId;
+    private Producto productoId;
     private int cantidad;
     private double precioUnitario;
 
-    public DetalleVenta(int id, int ventaId, int productoId, int cantidad, double precioUnitario) {
+    public DetalleVenta(int id, Venta ventaId, Producto productoId, int cantidad, double precioUnitario) {
         this.id = id;
         this.ventaId = ventaId;
         this.productoId = productoId;
@@ -32,19 +32,19 @@ public class DetalleVenta {
         this.id = id;
     }
 
-    public int getVentaId() {
+    public Venta getVentaId() {
         return ventaId;
     }
 
-    public void setVentaId(int ventaId) {
+    public void setVentaId(Venta ventaId) {
         this.ventaId = ventaId;
     }
 
-    public int getProductoId() {
+    public Producto getProductoId() {
         return productoId;
     }
 
-    public void setProductoId(int productoId) {
+    public void setProductoId(Producto productoId) {
         this.productoId = productoId;
     }
 

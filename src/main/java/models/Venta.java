@@ -5,15 +5,17 @@
 package models;
 
 import java.sql.Date;
+import java.util.List;
 
 /**
  *
  * @author egarm
  */
 public class Venta {
-        private int id;
+    private int id;
     private double total;
     private Date fecha;
+    private List<DetalleVenta> detatellesVentas  = null;
 
     public Venta(int id, double total, Date fecha) {
         this.id = id;
