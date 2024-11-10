@@ -29,6 +29,9 @@ public class LoginController implements Initializable {
 
     @FXML
     private Label name;
+    
+    @FXML
+    private Label invalidationLabel;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -40,13 +43,34 @@ public class LoginController implements Initializable {
 
     @FXML
     private void switchToSecondary() throws IOException {
-        try {
+        boolean userflag = true;
+        boolean pwdflag = true;
+         if (textlbl.getText().trim().isEmpty()) {
+            // Aplica un estilo para marcar el campo como inválido
+             textlbl.setStyle("-fx-border-color: red; -fx-border-width: 2px;");
+             userflag = false;
+        } else {
+            textlbl.setStyle(null);
+        }
+         if (pswLbl.getText().trim().isEmpty()) {
+            // Aplica un estilo para marcar el campo como inválido
+             pswLbl.setStyle("-fx-border-color: red; -fx-border-width: 2px;");
+             pwdflag = false;
+        } else {
+            pswLbl.setStyle(null);
+        }
+         
+        if (userflag && pwdflag )try {
             if (ur.loginWithCredentials(textlbl.getText(), pswLbl.getText()) != null) {
                 App.setRoot("mainWindow");
+            }else {
+                invalidationLabel.setVisible(true);
+                System.out.println("credenciales equivocadas");
             }
         } catch (SQLException ex) {
             Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        } 
+        
     }
 
     @FXML
