@@ -78,10 +78,10 @@ INSERT INTO users (nombre, password, rol_id) VALUES ('Juan Pérez', 'password123
 INSERT INTO users (nombre, password, rol_id) VALUES ('Maria López', 'password123', 2); -- Empleado
 INSERT INTO users (nombre, password, rol_id) VALUES ('Carlos Jiménez', 'password123', 3); -- Supervisor
 
-INSERT INTO productos (nombre, stock, segmento_id) VALUES ('Cuaderno', 100, 1); -- Papelería
-INSERT INTO productos (nombre, stock, segmento_id) VALUES ('Lápiz', 150, 1); -- Papelería
-INSERT INTO productos (nombre, stock, segmento_id) VALUES ('Agua Embotellada', 50, 2); -- Abarrotes
-INSERT INTO productos (nombre, stock, segmento_id) VALUES ('Galletas', 75, 2); -- Abarrotes
+INSERT INTO productos (nombre, stock, segmento_id, costo, precio) VALUES ('Cuaderno', 100, 1, 50, 22); -- Papelería
+INSERT INTO productos (nombre, stock, segmento_id, costo, precio) VALUES ('Lápiz', 150, 1, 50, 22); -- Papelería
+INSERT INTO productos (nombre, stock, segmento_id, costo, precio) VALUES ('Agua Embotellada', 50, 2, 50, 22); -- Abarrotes
+INSERT INTO productos (nombre, stock, segmento_id, costo, precio) VALUES ('Galletas', 75, 2, 50, 22); -- Abarrotes
 
 INSERT INTO ventas (total) VALUES (50.00);
 INSERT INTO ventas (total) VALUES (25.50);
