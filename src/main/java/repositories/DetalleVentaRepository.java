@@ -25,7 +25,7 @@ public class DetalleVentaRepository {
                     resultSet.getInt("venta_id"),
                     resultSet.getInt("producto_id"),
                     resultSet.getInt("cantidad"),
-                    resultSet.getDouble("precio_unitario")
+                    resultSet.getDouble("precio_venta")
                 );
                 detallesVentas.add(detalleVenta);
             }

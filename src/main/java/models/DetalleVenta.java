@@ -7,6 +7,7 @@ package models;
 import java.sql.Connection;
 import java.sql.SQLException;
 import repositories.ProductoRepository;
+import repositories.SqliteConn;
 
 /**
  *
@@ -17,7 +18,7 @@ public class DetalleVenta {
     private int ventaId;
     private int productoId;
     private int cantidad;
-    private double precioUnitario;
+    private double precio_venta;
 
     private Producto producto; // Producto se cargará de forma diferida
     private boolean productoCargado = false; // Para lazy loading del producto
@@ -27,7 +28,7 @@ public class DetalleVenta {
         this.ventaId = ventaId;
         this.productoId = productoId;
         this.cantidad = cantidad;
-        this.precioUnitario = precioUnitario;
+        this.precio_venta = precioUnitario;
     }
 
     // Getters y setters
@@ -63,16 +64,16 @@ public class DetalleVenta {
         this.cantidad = cantidad;
     }
 
-    public double getPrecioUnitario() {
-        return precioUnitario;
+    public double getPrecio_venta() {
+        return precio_venta;
     }
 
-    public void setPrecioUnitario(double precioUnitario) {
-        this.precioUnitario = precioUnitario;
+    public void setPrecio_venta(double precio_venta) {
+        this.precio_venta = precio_venta;
     }
 
     // Lazy loading del producto
-    public Producto getProducto(Connection connection) throws SQLException {
+    public Producto getProducto(SqliteConn connection) throws SQLException {
         if (!productoCargado) {
             ProductoRepository productoRepo = new ProductoRepository(connection);
             this.producto = productoRepo.findById(this.productoId);

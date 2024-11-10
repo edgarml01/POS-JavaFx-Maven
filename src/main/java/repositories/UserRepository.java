@@ -24,23 +24,22 @@ public class UserRepository implements IUserRepository{
     /**
      * Metodo que devuelve true si las credenciales coniciden y devuelve false si las 
      * credenciales no coinciden 
-     * @param String username nombre de usuario
+     * @param String usernombre nombre de usuario
      * @param String password contrasenia del usuario 
      * @retun Boolean
      */
-    public User loginWithCredentials(String username, String password)throws SQLException{
-        String query = "SELECT * FROM users WHERE name = ? and password = ?";
+    public User loginWithCredentials(String usernombre, String password)throws SQLException{
+        String query = "SELECT * FROM users WHERE nombre = ? and password = ?";
         PreparedStatement statement = this.conn.prepareStatement(query);
-        statement.setString(1, username);
+        statement.setString(1, usernombre);
         statement.setString(2, password);
         ResultSet resultSet = statement.executeQuery();
 
        if (resultSet.next()) {
             return new User(
                 resultSet.getInt("id"),
-                resultSet.getString("name"),
-                resultSet.getString("password")
-                //resultSet.getString("role")
+                resultSet.getString("nombre"),
+                resultSet.getInt("role")
             );
         }
         return null;
@@ -56,7 +55,7 @@ public class UserRepository implements IUserRepository{
         if (resultSet.next()) {
             return new User(
                 resultSet.getInt("id"),
-                resultSet.getString("name"),
+                resultSet.getString("nombre"),
                 resultSet.getString("password")
                 //resultSet.getString("role")
             );

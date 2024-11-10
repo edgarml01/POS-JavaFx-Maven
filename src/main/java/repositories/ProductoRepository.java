@@ -22,15 +22,15 @@ public class ProductoRepository implements IProductRepository {
     
     private Connection connection;
     
-    public ProductoRepository(Connection connection) {
-        this.connection = connection;
+    public ProductoRepository(SqliteConn connection) {
+        this.connection = connection.connect();
     }
     
     @Override
     public void addProduct(Producto product) {
-         String query = "INSERT INTO productos (name, stock, segmento_id) VALUES (?, ?, ?)";
+         String query = "INSERT INTO productos (nombre, stock, segmento_id, precio, costo) VALUES (?, ?, ?, ?, ?)";
         try (PreparedStatement statement = connection.prepareStatement(query)) {
-            statement.setString(1, product.getName());
+            statement.setString(1, product.getNombre());
             statement.setInt(2, product.getStock());
             statement.setInt(3, product.getSegmentoId());
             statement.executeUpdate();
@@ -47,9 +47,11 @@ public class ProductoRepository implements IProductRepository {
             ResultSet rs = statement.executeQuery();
             if (rs.next()) {
                 return new Producto(rs.getInt("id"), 
-                        rs.getString("name"), 
+                        rs.getString("nombre"), 
                         rs.getInt("stock"), 
-                        rs.getInt("segmento_id"));
+                        rs.getInt("segmento_id"),
+                        rs.getDouble("precio"),
+                        rs.getDouble("costo"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -64,7 +66,12 @@ public class ProductoRepository implements IProductRepository {
         try (Statement statement = connection.createStatement()) {
             ResultSet rs = statement.executeQuery(query);
             while (rs.next()) {
-                products.add(new Producto(rs.getInt("id"), rs.getString("name"), rs.getInt("stock"), rs.getInt("segmento_id")));
+                products.add(new Producto(rs.getInt("id"), 
+                        rs.getString("nombre"), 
+                        rs.getInt("stock"), 
+                        rs.getInt("segmento_id"),
+                        rs.getDouble("precio"),
+                        rs.getDouble("costo")));
             }
         } catch (SQLException e) {
             e.printStackTrace();

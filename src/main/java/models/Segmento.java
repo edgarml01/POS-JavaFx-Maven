@@ -11,6 +11,21 @@ package models;
 public class Segmento {
      private int id;
     private String nombre;
+    private String descripcion;
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public Segmento(int id, String nombre, String descripcion) {
+        this.id = id;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+    }
 
     public Segmento(int id, String nombre) {
         this.id = id;

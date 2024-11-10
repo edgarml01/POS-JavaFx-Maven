@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="595.0" prefWidth="793.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox  fx:id="leftPane" spacing="10" style="-fx-padding: 10;" HBox.hgrow="NEVER" prefWidth="300" />
+      <VBox  fx:id="centerPane" spacing="10" HBox.hgrow="ALWAYS" style="-fx-padding: 10;"/>
+   </children>
+</HBox>

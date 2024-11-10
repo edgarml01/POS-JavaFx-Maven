@@ -23,6 +23,19 @@ public class User {
         
     }
 
+    public User(int id, String username, String password, int role) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.role = role;
+    }
+    
+    public User(int id, String username,  int role) {
+        this.id = id;
+        this.username = username;
+        this.role = role;
+    }
+
     // Getters y setters
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }

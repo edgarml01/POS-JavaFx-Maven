@@ -13,18 +13,38 @@ package models;
 public class Producto  {
     
     private int id;
-    private String name;
+    private String nombre;
     private int stock;
+    private double precio;
+    private double costo;
     private Segmento segmento; 
     private int segmentoId; 
 
     public Producto(){}
     
-    public Producto(int id, String name, int stock, int segmentoId) {
+    public Producto(int id, String name, int stock, int segmentoId, double precio, double costo) {
         this.id = id;
-        this.name = name;
+        this.nombre = name;
         this.stock = stock;
+        this.precio = precio;
+        this.costo = costo;
         this.segmentoId = segmentoId;
+    }
+
+    public double getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(double precio) {
+        this.precio = precio;
+    }
+
+    public double getCosto() {
+        return costo;
+    }
+
+    public void setCosto(double costo) {
+        this.costo = costo;
     }
 
     public int getId() {
@@ -35,12 +55,12 @@ public class Producto  {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public int getStock() {
