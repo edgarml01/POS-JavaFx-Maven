@@ -1,5 +1,6 @@
 com\mycompany\mavenproject2\App.class
 com\mycompany\mavenproject2\LoginController.class
+com\mycompany\mavenproject2\MainWindowController.class
 interfaces\IVentaRepostitory.class
 models\User.class
 interfaces\IProductRepository.class
@@ -12,7 +13,6 @@ module-info.class
 interfaces\IUserRepository.class
 models\Venta.class
 Services\StatService.class
-com\mycompany\mavenproject2\SecondaryController.class
 repositories\ProductoRepository.class
 models\Producto.class
 repositories\UserRepository.class
