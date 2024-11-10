@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import io.github.palexdev.materialfx.controls.MFXCheckbox?>
+<?import io.github.palexdev.materialfx.controls.MFXCircleToggleNode?>
+<?import io.github.palexdev.materialfx.controls.MFXComboBox?>
 <?import io.github.palexdev.materialfx.controls.MFXPasswordField?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
@@ -23,6 +25,8 @@
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <MFXPasswordField layoutX="217.0" layoutY="150.0" />
+                        <MFXCircleToggleNode layoutX="361.0" layoutY="33.0" />
+                        <MFXComboBox layoutX="44.0" layoutY="280.0" />
                      </children></AnchorPane>
             </content>
           </Tab>

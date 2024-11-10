@@ -4,19 +4,25 @@
  */
 package models;
 
+import java.sql.Connection;
+import java.sql.SQLException;
+import repositories.ProductoRepository;
+
 /**
  *
  * @author egarm
  */
 public class DetalleVenta {
- 
     private int id;
-    private Venta ventaId;
-    private Producto productoId;
+    private int ventaId;
+    private int productoId;
     private int cantidad;
     private double precioUnitario;
 
-    public DetalleVenta(int id, Venta ventaId, Producto productoId, int cantidad, double precioUnitario) {
+    private Producto producto; // Producto se cargará de forma diferida
+    private boolean productoCargado = false; // Para lazy loading del producto
+
+    public DetalleVenta(int id, int ventaId, int productoId, int cantidad, double precioUnitario) {
         this.id = id;
         this.ventaId = ventaId;
         this.productoId = productoId;
@@ -24,6 +30,7 @@ public class DetalleVenta {
         this.precioUnitario = precioUnitario;
     }
 
+    // Getters y setters
     public int getId() {
         return id;
     }
@@ -32,19 +39,19 @@ public class DetalleVenta {
         this.id = id;
     }
 
-    public Venta getVentaId() {
+    public int getVentaId() {
         return ventaId;
     }
 
-    public void setVentaId(Venta ventaId) {
+    public void setVentaId(int ventaId) {
         this.ventaId = ventaId;
     }
 
-    public Producto getProductoId() {
+    public int getProductoId() {
         return productoId;
     }
 
-    public void setProductoId(Producto productoId) {
+    public void setProductoId(int productoId) {
         this.productoId = productoId;
     }
 
@@ -62,5 +69,15 @@ public class DetalleVenta {
 
     public void setPrecioUnitario(double precioUnitario) {
         this.precioUnitario = precioUnitario;
+    }
+
+    // Lazy loading del producto
+    public Producto getProducto(Connection connection) throws SQLException {
+        if (!productoCargado) {
+            ProductoRepository productoRepo = new ProductoRepository(connection);
+            this.producto = productoRepo.findById(this.productoId);
+            productoCargado = true; // Marcar que el producto ha sido cargado
+        }
+        return producto;
     }
 }

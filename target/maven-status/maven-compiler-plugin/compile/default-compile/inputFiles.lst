@@ -1,5 +1,5 @@
 C:\Users\egarm\OneDrive\Documentos\NetBeansProjects\mavenproject2\src\main\java\com\mycompany\mavenproject2\App.java
-C:\Users\egarm\OneDrive\Documentos\NetBeansProjects\mavenproject2\src\main\java\com\mycompany\mavenproject2\PrimaryController.java
+C:\Users\egarm\OneDrive\Documentos\NetBeansProjects\mavenproject2\src\main\java\com\mycompany\mavenproject2\LoginController.java
 C:\Users\egarm\OneDrive\Documentos\NetBeansProjects\mavenproject2\src\main\java\com\mycompany\mavenproject2\SecondaryController.java
 C:\Users\egarm\OneDrive\Documentos\NetBeansProjects\mavenproject2\src\main\java\com\mycompany\mavenproject2\Session.java
 C:\Users\egarm\OneDrive\Documentos\NetBeansProjects\mavenproject2\src\main\java\interfaces\IDetallesVentaRepository.java
@@ -12,7 +12,9 @@ C:\Users\egarm\OneDrive\Documentos\NetBeansProjects\mavenproject2\src\main\java\
 C:\Users\egarm\OneDrive\Documentos\NetBeansProjects\mavenproject2\src\main\java\models\User.java
 C:\Users\egarm\OneDrive\Documentos\NetBeansProjects\mavenproject2\src\main\java\models\Venta.java
 C:\Users\egarm\OneDrive\Documentos\NetBeansProjects\mavenproject2\src\main\java\module-info.java
+C:\Users\egarm\OneDrive\Documentos\NetBeansProjects\mavenproject2\src\main\java\repositories\DetalleVentaRepository.java
 C:\Users\egarm\OneDrive\Documentos\NetBeansProjects\mavenproject2\src\main\java\repositories\ProductoRepository.java
 C:\Users\egarm\OneDrive\Documentos\NetBeansProjects\mavenproject2\src\main\java\repositories\SqliteConn.java
 C:\Users\egarm\OneDrive\Documentos\NetBeansProjects\mavenproject2\src\main\java\repositories\UserRepository.java
+C:\Users\egarm\OneDrive\Documentos\NetBeansProjects\mavenproject2\src\main\java\repositories\VentaRepository.java
 C:\Users\egarm\OneDrive\Documentos\NetBeansProjects\mavenproject2\src\main\java\Services\StatService.java

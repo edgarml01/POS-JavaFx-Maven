@@ -40,7 +40,7 @@ public class ProductoRepository implements IProductRepository {
     }
 
     @Override
-    public Producto getProductById(int id) {
+    public Producto findById(int id) {
          String query = "SELECT * FROM productos WHERE id = ?";
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setInt(1, id);

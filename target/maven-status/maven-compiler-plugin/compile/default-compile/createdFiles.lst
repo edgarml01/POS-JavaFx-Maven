@@ -1,12 +1,13 @@
 com\mycompany\mavenproject2\App.class
+com\mycompany\mavenproject2\LoginController.class
 interfaces\IVentaRepostitory.class
 models\User.class
 interfaces\IProductRepository.class
 com\mycompany\mavenproject2\Session.class
+repositories\VentaRepository.class
 repositories\SqliteConn.class
 models\Segmento.class
 models\DetalleVenta.class
-com\mycompany\mavenproject2\PrimaryController.class
 module-info.class
 interfaces\IUserRepository.class
 models\Venta.class
@@ -15,4 +16,5 @@ com\mycompany\mavenproject2\SecondaryController.class
 repositories\ProductoRepository.class
 models\Producto.class
 repositories\UserRepository.class
+repositories\DetalleVentaRepository.class
 interfaces\IDetallesVentaRepository.class

@@ -10,16 +10,16 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import models.User;
 import repositories.SqliteConn;
 import javafx.scene.control.Label;
-import models.Producto;
 import repositories.UserRepository;
+import repositories.VentaRepository;
 
-public class PrimaryController implements Initializable {
+public class LoginController implements Initializable {
 
     private SqliteConn slql;
     private UserRepository ur;
+    private VentaRepository venta;
 
     @FXML
     private MFXPasswordField pswLbl;
@@ -34,19 +34,18 @@ public class PrimaryController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         slql = new SqliteConn();
         ur = new UserRepository(slql);
+        venta = new VentaRepository(slql);
+        
     }
 
     @FXML
     private void switchToSecondary() throws IOException {
-        
-     
-
         try {
             if (ur.loginWithCredentials(textlbl.getText(), pswLbl.getText()) != null) {
-                App.setRoot("mainW");
+                App.setRoot("mainWindow");
             }
         } catch (SQLException ex) {
-            Logger.getLogger(PrimaryController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

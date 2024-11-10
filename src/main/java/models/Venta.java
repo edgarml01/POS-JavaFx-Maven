@@ -4,8 +4,12 @@
  */
 package models;
 
+import java.sql.Connection;
 import java.sql.Date;
+import java.sql.SQLException;
+import java.time.LocalDateTime;
 import java.util.List;
+import repositories.DetalleVentaRepository;
 
 /**
  *
@@ -13,11 +17,11 @@ import java.util.List;
  */
 public class Venta {
     private int id;
-    private double total;
-    private Date fecha;
-    private List<DetalleVenta> detatellesVentas  = null;
+    private double total; 
+    private LocalDateTime fecha;
+    private List<DetalleVenta> detallesVentas  = null;
 
-    public Venta(int id, double total, Date fecha) {
+    public Venta(int id, double total, LocalDateTime fecha) {
         this.id = id;
         this.total = total;
         this.fecha = fecha;
@@ -34,17 +38,29 @@ public class Venta {
     public double getTotal() {
         return total;
     }
+    
+    public List<DetalleVenta> getDetalles() {
+        return this.detallesVentas;
+    }
 
     public void setTotal(double total) {
         this.total = total;
     }
 
-    public Date getFecha() {
+    public LocalDateTime getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(LocalDateTime fecha) {
         this.fecha = fecha;
+    }
+    
+     public List<DetalleVenta> cargarDetalles(Connection connection) throws SQLException {
+        if (detallesVentas == null) {
+            DetalleVentaRepository detalleVentaRepo = new DetalleVentaRepository(connection);
+            this.detallesVentas = detalleVentaRepo.findByVentaId(this.id);
+        }
+        return detallesVentas;
     }
 
 }

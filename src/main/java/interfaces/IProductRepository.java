@@ -14,7 +14,7 @@ import models.Producto;
  */
 public interface IProductRepository {
   void addProduct(Producto product);
-    Producto getProductById(int id);
+    Producto findById(int id);
     List<Producto> getAllProducts();
     void updateProductStock(int id, int newStock);
     void deleteProduct(int id);
