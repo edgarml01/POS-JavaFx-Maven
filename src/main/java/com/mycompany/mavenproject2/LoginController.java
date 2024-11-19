@@ -62,7 +62,7 @@ public class LoginController implements Initializable {
          
         if (userflag && pwdflag )try {
             if (ur.loginWithCredentials(textlbl.getText(), pswLbl.getText()) != null) {
-                App.setRoot("mainWindow");
+                App.setRoot("mainWindow" );
             }else {
                 invalidationLabel.setVisible(true);
                 System.out.println("credenciales equivocadas");
