@@ -10,8 +10,12 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import repositories.SqliteConn;
 import javafx.scene.control.Label;
+import org.apache.commons.validator.routines.IntegerValidator;
+import org.controlsfx.validation.ValidationSupport;
+import org.controlsfx.validation.Validator;
 import repositories.UserRepository;
 import repositories.VentaRepository;
 
@@ -31,6 +35,9 @@ public class LoginController implements Initializable {
     private Label name;
     
     @FXML
+    private Button primaryButton;
+    
+    @FXML
     private Label invalidationLabel;
 
     @Override
@@ -38,6 +45,11 @@ public class LoginController implements Initializable {
         slql = new SqliteConn();
         ur = new UserRepository(slql);
         venta = new VentaRepository(slql);
+        ValidationSupport vl = new ValidationSupport();
+        
+        vl.registerValidator(textlbl, Validator.createEmptyValidator("Ingresa tu usuario"));
+        vl.registerValidator(pswLbl, Validator.createEmptyValidator("Ingresa la contraseña"));
+        primaryButton.disableProperty().bind(vl.invalidProperty());
         
     }
 
@@ -45,6 +57,12 @@ public class LoginController implements Initializable {
     private void switchToSecondary() throws IOException {
         boolean userflag = true;
         boolean pwdflag = true;
+        
+        IntegerValidator integerValidator = IntegerValidator.getInstance();
+        if (!integerValidator.isValid(textlbl.getText())) {
+            System.out.println("Es un entero");
+       
+        }
          if (textlbl.getText().trim().isEmpty()) {
             // Aplica un estilo para marcar el campo como inválido
              textlbl.setStyle("-fx-border-color: red; -fx-border-width: 2px;");
@@ -73,9 +91,6 @@ public class LoginController implements Initializable {
         
     }
 
-    @FXML
-    private void switchToSecondary2() throws IOException {
-        // App.setRoot("secondary");
-    }
+    
 
 }
