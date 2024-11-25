@@ -26,7 +26,7 @@ public class App extends Application {
         System.out.println(vr.findAll());
         System.out.println(pr.getAllProducts());
         
-        scene = new Scene(loadFXML("login"));
+        scene = new Scene(loadFXML("secondary"));
         stage.setScene(scene);
         stage.show();
     }

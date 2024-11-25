@@ -1,26 +1,97 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
-<?import com.jfoenix.controls.JFXHamburger?>
-<?import io.github.palexdev.materialfx.controls.MFXTextField?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
-<?import org.controlsfx.control.Rating?>
-<?import org.controlsfx.control.textfield.CustomTextField?>
 
-<VBox alignment="CENTER" prefHeight="422.0" prefWidth="368.0" spacing="20.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.mavenproject2.SecondaryController">
-    <children>
-      <MFXTextField />
-      <JFXHamburger fx:id="hamburger" prefHeight="122.0" prefWidth="228.0">
-         <children>
-            <CustomTextField />
-            
-         </children></JFXHamburger>
-        <Button fx:id="secondaryButton" onAction="#switchToPrimary" text="Switch to Primary View" />
-      <Rating />
-    </children>
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-    </padding>
-</VBox>
+<BorderPane fx:id="mainPane" onDragDetected="#cargarProdcutosView" prefHeight="662.0" prefWidth="1006.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.mavenproject2.SecondaryController">
+    <!-- Encabezado -->
+    <top>
+        <HBox spacing="20" style="-fx-background-color: #f5f5f5;">
+         <ImageView fitHeight="46.0" fitWidth="49.0" opacity="0.89" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@images/papelerias.png" />
+            </image>
+          
+         </ImageView>
+            <Label prefHeight="42.0" prefWidth="156.0" style="-fx-font-size: 18; -fx-font-weight: bold;" text="Papelería Conalep" />
+            <Pane prefHeight="52.0" prefWidth="475.0" HBox.hgrow="ALWAYS" />
+            <HBox spacing="10">
+            <ImageView fitHeight="52.0" fitWidth="56.0" pickOnBounds="true" smooth="false">
+               <image>
+                  <Image url="@images/user.jpg" />
+               </image>
+            </ImageView>
+            <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" graphicTextGap="5" prefHeight="47.0" prefWidth="155.0" style="-fx-font-size: 16;" text="Administrador" />
+
+
+            </HBox>
+        </HBox>
+    </top>
+
+    <!-- Barra lateral -->
+    <left>
+        <VBox prefHeight="582.0" prefWidth="242.0" spacing="15" style="-fx-background-color: #2c3e50;">
+            <JFXButton graphicTextGap="10" onAction="#cargarUsuariosView" prefHeight="65.0" prefWidth="229.0" style="-fx-background-color: #34495e; -fx-text-fill: white;" stylesheets="@style.css" text="Usuarios">
+            <graphic>
+               <ImageView fitHeight="43.0" fitWidth="47.0" pickOnBounds="true" smooth="false">
+                  <image>
+                     <Image url="@images/userIcon.png" />
+                  </image>
+               </ImageView>
+            </graphic>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor></JFXButton>
+            <JFXButton fx:id="btnProducts" graphicTextGap="10" onAction="#cargarProdcutosView" prefHeight="65.0" prefWidth="229.0" style="-fx-background-color: #34495e; -fx-text-fill: white;" stylesheets="@style.css" text="Productos">
+            <graphic>
+               <ImageView fitHeight="43.0" fitWidth="47.0" pickOnBounds="true" smooth="false">
+                  <image>
+                     <Image url="@images/product.png" />
+                  </image>
+               </ImageView>
+            </graphic>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor></JFXButton>
+         <JFXButton graphicTextGap="10" prefHeight="63.0" prefWidth="233.0" style="-fx-background-color: #34495e; -fx-text-fill: white;" stylesheets="@style.css" text="Ventas">
+            <graphic>
+               <ImageView fitHeight="41.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="@images/sales.png" />
+                  </image>
+               </ImageView>
+            </graphic>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+         </JFXButton>
+            <JFXButton graphicTextGap="10" prefHeight="63.0" prefWidth="233.0" style="-fx-background-color: #34495e; -fx-text-fill: white;" stylesheets="@style.css" text="Reporte de ventas">
+            <graphic>
+               <ImageView fitHeight="41.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="@images/stonks.png" />
+                  </image>
+               </ImageView>
+            </graphic>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor></JFXButton>
+            <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" graphicTextGap="10" nodeOrientation="LEFT_TO_RIGHT" prefHeight="42.0" prefWidth="235.0" style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-text-alignment: center;" text="Salir" textAlignment="CENTER">
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor></JFXButton>
+        </VBox>
+    </left>
+
+    <!-- Panel principal -->
+    <center>
+       
+    </center>
+</BorderPane>

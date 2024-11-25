@@ -1,0 +1,93 @@
+
+.sidebar {
+    -fx-background-color: #2c3e50;
+}
+
+.menu-button {
+    -fx-font-size: 16px;
+    -fx-background-color: #34495e;
+    -fx-text-fill: white;
+    -fx-padding: 10;
+    -fx-pref-width: 150px;
+}
+
+/* Estilo para el encabezado */
+.header {
+    -fx-background-color: #1abc9c;
+    -fx-padding: 10;
+    -fx-alignment: center;
+}
+
+.header-label {
+    -fx-font-size: 24px;
+    -fx-text-fill: white;
+}
+
+/* Estilo para las tarjetas de contenido */
+.content-tile {
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+    -fx-alignment: center;
+    -fx-padding: 15;
+    -fx-pref-height: 100px;
+    -fx-pref-width: 150px;
+}
+ 
+.sidebar {
+    -fx-background-color: #2c3e50;
+}
+.jfx-button {
+    -fx-background-color: #e74c3c; /* Color de fondo principal */
+    -fx-text-fill: white;         /* Color del texto */
+    -fx-border-color: transparent; /* Bordes invisibles */
+    -fx-border-radius: 20;        /* Ajusta el radio si es necesario */
+    -fx-border-width: 1;
+    -fx-text-fill: #333;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-padding: 10 20;
+    -fx-alignment: center-left;
+    -fx-spacing: 10;
+}
+
+
+.jfx-button:focused {
+    -fx-effect: null; /* Quita cualquier resplandor al enfoque */
+    -fx-border-color: transparent;
+}
+
+.jfx-button:hover {
+    -fx-background-color: #f1f1f1;
+    -fx-border-color: #888;
+}
+
+.jfx-button:pressed {
+    -fx-background-color: #e0e0e0;
+    -fx-border-color: #777;
+}
+
+.jfx-button .graphic {
+    -fx-padding: 0 10 0 0;
+}
+
+.jfx-button .label {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333;
+}
+
+
+.label {
+    -fx-text-fill: #2c3e50;
+}
+
+/* Responsividad con media queries */
+@media screen and (max-width: 600px) {
+    .menu-button {
+        -fx-pref-width: 100px;
+    }
+    .content-tile {
+        -fx-pref-height: 80px;
+        -fx-pref-width: 120px;
+    }
+}
