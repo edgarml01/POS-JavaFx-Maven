@@ -4,12 +4,8 @@
  */
 package models;
 
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.List;
-import repositories.DetalleVentaRepository;
 
 /**
  *
@@ -19,7 +15,9 @@ public class Venta {
     private int id;
     private double total; 
     private LocalDateTime fecha;
-    private List<DetalleVenta> detallesVentas  = null;
+    private List<DetalleVenta> detalles;
+    
+    public Venta(){}
 
     public Venta(int id, double total, LocalDateTime fecha) {
         this.id = id;
@@ -27,8 +25,7 @@ public class Venta {
         this.fecha = fecha;
     }
 
-    public Venta(int id, double total) {
-        this.id = id;
+    public Venta( double total) {
         this.total = total;
     }
 
@@ -45,8 +42,12 @@ public class Venta {
     }
     
     public List<DetalleVenta> getDetalles() {
-        return this.detallesVentas;
+        return this.detalles;
     }
+
+	public void setDetalles(List<DetalleVenta> detalles) {
+		this.detalles = detalles;
+	}
 
     public void setTotal(double total) {
         this.total = total;
@@ -62,15 +63,8 @@ public class Venta {
 
 	@Override
 	public String toString() {
-		return "Venta{" + "id=" + id + ", total=" + total + ", fecha=" + fecha + ", detallesVentas=" + detallesVentas + '}';
+		return "Venta{" + "id=" + id + ", total=" + total + ", fecha=" + fecha + ", detallesVentas=" + detalles+ '}';
 	}
     
-     public List<DetalleVenta> cargarDetalles(Connection connection) throws SQLException {
-        if (detallesVentas == null) {
-            DetalleVentaRepository detalleVentaRepo = new DetalleVentaRepository(connection);
-            this.detallesVentas = detalleVentaRepo.findByVentaId(this.id);
-        }
-        return detallesVentas;
-    }
 
 }

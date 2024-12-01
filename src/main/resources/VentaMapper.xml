@@ -13,21 +13,57 @@
         SELECT * FROM ventas WHERE id = #{id};
     </select>
 
+    <select id="cargarDetalles" resultType="models.DetalleVenta">
+        SELECT * FROM detallesVenta WHERE venta_id = #{id};
+    </select>
+
     <!-- Insertar una nueva venta -->
     <insert id="insertVenta" parameterType="models.Venta" useGeneratedKeys="true" keyProperty="id">
-        INSERT INTO ventas (fecha, cliente_id, total) 
-        VALUES (#{fecha}, #{cliente_id}, #{total});
+        INSERT INTO ventas ( fecha, total) 
+        VALUES ( DATETIME('now', 'localtime'), #{total});
     </insert>
 
     <!-- Actualizar una venta -->
     <update id="updateVenta" parameterType="models.Venta">
         UPDATE ventas
-        SET fecha = #{fecha}, cliente_id = #{cliente_id}, total = #{total}
+        SET fecha = #{fecha},  total = #{total}
         WHERE id = #{id};
     </update>
+
+<resultMap id="VentaResultMap" type="models.Venta">
+    <id property="id" column="id"/>
+    <result property="total" column="total"/>
+    <result property="fecha" column="fecha"/>
+
+    <!-- Aquí estamos mapeando la colección de detalles asociados a esta venta -->
+    <collection property="detalles" ofType="models.DetalleVenta">
+        <id property="id" column="detalle_id"/>
+        <result property="ventaId" column="venta_id"/>
+        <result property="productoId" column="producto_id"/>
+        <result property="cantidad" column="cantidad"/>
+        <result property="precio_venta" column="precio_venta"/>
+	<association property="producto" javaType="Producto">
+                <id property="id" column="producto_id" />
+                <result property="nombre" column="nombre" />
+                <result property="costo" column="costo" />
+                <result property="precio" column="precio" />
+                <result property="stock" column="stock" />
+                <result property="segmento_id" column="segmento_id" />
+            </association>
+    </collection>
+</resultMap>
 
     <!-- Eliminar una venta -->
     <delete id="deleteVenta">
         DELETE FROM ventas WHERE id = #{id};
     </delete>
+    <select id="getVentaConDetalles" resultMap="VentaResultMap">
+    SELECT 
+        v.id AS id, v.total, v.fecha,
+        dv.id AS detalle_id, dv.venta_id, dv.producto_id, dv.cantidad, dv.precio_venta
+    FROM ventas v
+    LEFT JOIN detallesVenta dv ON v.id = dv.venta_id
+    WHERE v.id = #{id};
+</select>
+
 </mapper>

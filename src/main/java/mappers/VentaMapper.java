@@ -5,6 +5,7 @@
 package mappers;
 import java.util.List;
 import models.Venta;
+import models.DetalleVenta;
 
 /**
  *
@@ -13,6 +14,8 @@ import models.Venta;
 public interface VentaMapper {
     Venta getVentaById(int id);
     List<Venta> getAllVentas();
+    List<Venta> getVentaConDetalles(int id);
+    List<DetalleVenta> cargarDetalles();
     void insertVenta(Venta venta);
     void updateVenta(Venta venta);
     void deleteVenta(int id);

@@ -16,70 +16,59 @@ import org.controlsfx.validation.ValidationSupport;
 import org.controlsfx.validation.Validator;
 import org.mindrot.jbcrypt.BCrypt;
 import mappers.UserMapper;
+import mappers.VentaMapper;
 import models.User;
+import models.Venta;
 
 public class LoginController implements Initializable {
-	private UserMapper usersMapper;
 
+     private UserMapper usersMapper;
 
-    @FXML
-    protected MFXPasswordField pswLbl;
+     @FXML
+     protected MFXPasswordField pswLbl;
 
-    @FXML
-    protected MFXTextField textlbl;
+     @FXML
+     protected MFXTextField textlbl;
 
-    @FXML
-    private Label name;
-    
-    @FXML
-    private Button primaryButton;
-    
-    @FXML
-    private Label invalidationLabel;
+     @FXML
+     private Label name;
 
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        ValidationSupport vl = new ValidationSupport();
+     @FXML
+     private Button primaryButton;
 
-	    try {
-	     SqlSession session = MyBatisUtil.getSession();
-	     usersMapper = session.getMapper(UserMapper.class);
+     @FXML
+     private Label invalidationLabel;
 
-	    } catch (Exception e) {
-		    System.out.println(e.getMessage());
-	    }
+     @Override
+     public void initialize(URL url, ResourceBundle rb) {
+	  ValidationSupport vl = new ValidationSupport();
+	  try {
+	       SqlSession session = MyBatisUtil.getSession();
+	       usersMapper = session.getMapper(UserMapper.class);
+	  } catch (Exception e) {
+	       System.out.println(e.getMessage());
+	  }
+	  try {
+	       vl.registerValidator(textlbl, Validator.createEmptyValidator("Ingresa tu usuario"));
+	       vl.registerValidator(pswLbl, Validator.createEmptyValidator("Ingresa la contraseña"));
+	       primaryButton.disableProperty().bind(vl.invalidProperty());
+	  } catch (Exception e) {
+	       System.out.println("Something went wrong with validations support " + e.getMessage());
+	  }
+     }
 
-        try {
-            vl.registerValidator(textlbl, Validator.createEmptyValidator("Ingresa tu usuario"));
-            vl.registerValidator(pswLbl, Validator.createEmptyValidator("Ingresa la contraseña"));
-            primaryButton.disableProperty().bind(vl.invalidProperty());
-        } catch (Exception e) {
-            System.out.println("Algo salio mal " + e.getMessage());
-        }
-
-        
-    }
-
-    @FXML
-    private void switchToSecondary() throws IOException {
-        boolean userflag = true;
-        boolean pwdflag = true;
-        
-        if (userflag && pwdflag )try {
-	    User u = usersMapper.validateUser(textlbl.getText());
-            if ( u != null && BCrypt.checkpw(pswLbl.getText(), u.getPassword())) {
-                App.setRoot("mainWindow" );
-		Session.setUser(u);
-            }else {
-                invalidationLabel.setVisible(true);
-                System.out.println("credenciales equivocadas");
-            }
-        } catch (Exception ex) {
-            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
-        } 
-        
-    }
-
-    
-
+     @FXML
+     private void switchToSecondary() throws IOException {
+	  try {
+	       User u = usersMapper.validateUser(textlbl.getText());
+	       if (u != null && BCrypt.checkpw(pswLbl.getText(), u.getPassword())) {
+		    App.setRoot("mainWindow");
+		    Session.setUser(u);
+	       } else {
+		    invalidationLabel.setVisible(true);
+	       }
+	  } catch (Exception ex) {
+	       System.out.println(ex.getMessage());
+	  }
+     }
 }

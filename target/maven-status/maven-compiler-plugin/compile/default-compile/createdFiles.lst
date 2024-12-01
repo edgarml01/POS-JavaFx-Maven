@@ -21,6 +21,7 @@ models\DetalleVenta.class
 module-info.class
 interfaces\IUserRepository.class
 repositories\UserRepository.class
+com\mycompany\mavenproject2\ProductosViewController.class
 interfaces\IDetallesVentaRepository.class
 com\mycompany\mavenproject2\App.class
 com\mycompany\mavenproject2\LoginController.class

@@ -19,8 +19,8 @@ public class DetalleVenta {
     private int productoId;
     private int cantidad;
     private double precio_venta;
+    private Producto producto;
 
-    private Producto producto; // Producto se cargará de forma diferida
     private boolean productoCargado = false; // Para lazy loading del producto
 
     public DetalleVenta(int id, int ventaId, int productoId, int cantidad, double precioUnitario) {
@@ -72,18 +72,18 @@ public class DetalleVenta {
         this.precio_venta = precio_venta;
     }
 
+	public Producto getProducto() {
+		return producto;
+	}
+
+	public void setProducto(Producto producto) {
+		this.producto = producto;
+	}
+
 	@Override
 	public String toString() {
-		return "DetalleVenta{" + "id=" + id + ", ventaId=" + ventaId + ", productoId=" + productoId + ", cantidad=" + cantidad + ", precio_venta=" + precio_venta + ", producto=" + producto + ", productoCargado=" + productoCargado + '}';
+		return "DetalleVenta{" + "id=" + id + ", ventaId=" + ventaId + ", productoId=" + productoId + ", cantidad=" + cantidad + ", precio_venta=" + precio_venta + ", =" + ", productoCargado=" + producto+ '}';
 	}
 
     // Lazy loading del producto
-    public Producto getProducto(SqliteConn connection) throws SQLException {
-        if (!productoCargado) {
-            ProductoRepository productoRepo = new ProductoRepository(connection);
-            this.producto = productoRepo.findById(this.productoId);
-            productoCargado = true; // Marcar que el producto ha sido cargado
-        }
-        return producto;
-    }
 }
