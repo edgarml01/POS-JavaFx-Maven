@@ -62,22 +62,22 @@
                 </rowConstraints>
                 <children>
                     <!-- Establece un tamaño fijo para cada botón -->
-                    <MFXButton text="6" GridPane.columnIndex="2" GridPane.rowIndex="1" prefWidth="60.0" prefHeight="40.0" minWidth="60.0" minHeight="40.0" maxWidth="60.0" maxHeight="40.0" />
-                    <MFXButton text="5" GridPane.columnIndex="1" GridPane.rowIndex="1" prefWidth="60.0" prefHeight="40.0" minWidth="60.0" minHeight="40.0" maxWidth="60.0" maxHeight="40.0" />
-                    <MFXButton text="2" GridPane.columnIndex="1" prefWidth="60.0" prefHeight="40.0" minWidth="60.0" minHeight="40.0" maxWidth="60.0" maxHeight="40.0" />
-                    <MFXButton text="3" GridPane.columnIndex="2" prefWidth="60.0" prefHeight="40.0" minWidth="60.0" minHeight="40.0" maxWidth="60.0" maxHeight="40.0" />
-                    <MFXButton text="4" GridPane.rowIndex="1" prefWidth="60.0" prefHeight="40.0" minWidth="60.0" minHeight="40.0" maxWidth="60.0" maxHeight="40.0" />
-                    <MFXButton GridPane.columnIndex="3" prefWidth="60.0" prefHeight="40.0" minWidth="60.0" minHeight="40.0" maxWidth="60.0" maxHeight="40.0" />
-                    <MFXButton GridPane.columnIndex="3" GridPane.rowIndex="1" prefWidth="60.0" prefHeight="40.0" minWidth="60.0" minHeight="40.0" maxWidth="60.0" maxHeight="40.0" />
-                    <MFXButton text="7" GridPane.rowIndex="2" prefWidth="60.0" prefHeight="40.0" minWidth="60.0" minHeight="40.0" maxWidth="60.0" maxHeight="40.0" />
-                    <MFXButton text="8" GridPane.columnIndex="1" GridPane.rowIndex="2" prefWidth="60.0" prefHeight="40.0" minWidth="60.0" minHeight="40.0" maxWidth="60.0" maxHeight="40.0" />
-                    <MFXButton text="9" GridPane.columnIndex="2" GridPane.rowIndex="2" prefWidth="60.0" prefHeight="40.0" minWidth="60.0" minHeight="40.0" maxWidth="60.0" maxHeight="40.0" />
-                    <MFXButton GridPane.columnIndex="3" GridPane.rowIndex="2" prefWidth="60.0" prefHeight="40.0" minWidth="60.0" minHeight="40.0" maxWidth="60.0" maxHeight="40.0" />
-                    <MFXButton text="+/-" GridPane.rowIndex="3" prefWidth="60.0" prefHeight="40.0" minWidth="60.0" minHeight="40.0" maxWidth="60.0" maxHeight="40.0" />
-                    <MFXButton text="0" GridPane.columnIndex="1" GridPane.rowIndex="3" prefWidth="60.0" prefHeight="40.0" minWidth="60.0" minHeight="40.0" maxWidth="60.0" maxHeight="40.0" />
-                    <MFXButton text="." GridPane.columnIndex="2" GridPane.rowIndex="3" prefWidth="60.0" prefHeight="40.0" minWidth="60.0" minHeight="40.0" maxWidth="60.0" maxHeight="40.0" />
-                    <MFXButton text="DEL" GridPane.columnIndex="3" GridPane.rowIndex="3" prefWidth="60.0" prefHeight="40.0" minWidth="60.0" minHeight="40.0" maxWidth="60.0" maxHeight="40.0" />
-                    <MFXButton text="1" prefWidth="60.0" prefHeight="40.0" minWidth="60.0" minHeight="40.0" maxWidth="60.0" maxHeight="40.0" />
+                    <MFXButton maxHeight="40.0" maxWidth="60.0" minHeight="40.0" minWidth="60.0" prefHeight="40.0" prefWidth="60.0" text="6" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                    <MFXButton maxHeight="40.0" maxWidth="60.0" minHeight="40.0" minWidth="60.0" prefHeight="40.0" prefWidth="60.0" text="5" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                    <MFXButton maxHeight="40.0" maxWidth="60.0" minHeight="40.0" minWidth="60.0" prefHeight="40.0" prefWidth="60.0" text="2" GridPane.columnIndex="1" />
+                    <MFXButton maxHeight="40.0" maxWidth="60.0" minHeight="40.0" minWidth="60.0" prefHeight="40.0" prefWidth="60.0" text="3" GridPane.columnIndex="2" />
+                    <MFXButton maxHeight="40.0" maxWidth="60.0" minHeight="40.0" minWidth="60.0" prefHeight="40.0" prefWidth="60.0" text="4" GridPane.rowIndex="1" />
+                    <MFXButton maxHeight="40.0" maxWidth="60.0" minHeight="40.0" minWidth="60.0" prefHeight="40.0" prefWidth="60.0" GridPane.columnIndex="3" />
+                    <MFXButton maxHeight="40.0" maxWidth="60.0" minHeight="40.0" minWidth="60.0" prefHeight="40.0" prefWidth="60.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                    <MFXButton maxHeight="40.0" maxWidth="60.0" minHeight="40.0" minWidth="60.0" prefHeight="40.0" prefWidth="60.0" text="7" GridPane.rowIndex="2" />
+                    <MFXButton maxHeight="40.0" maxWidth="60.0" minHeight="40.0" minWidth="60.0" prefHeight="40.0" prefWidth="60.0" text="8" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                    <MFXButton maxHeight="40.0" maxWidth="60.0" minHeight="40.0" minWidth="60.0" prefHeight="40.0" prefWidth="60.0" text="9" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                    <MFXButton maxHeight="40.0" maxWidth="60.0" minHeight="40.0" minWidth="60.0" prefHeight="40.0" prefWidth="60.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                    <MFXButton maxHeight="40.0" maxWidth="60.0" minHeight="40.0" minWidth="60.0" prefHeight="40.0" prefWidth="60.0" text="+/-" GridPane.rowIndex="3" />
+                    <MFXButton maxHeight="40.0" maxWidth="60.0" minHeight="40.0" minWidth="60.0" prefHeight="40.0" prefWidth="60.0" text="0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                    <MFXButton maxHeight="40.0" maxWidth="60.0" minHeight="40.0" minWidth="60.0" prefHeight="40.0" prefWidth="60.0" text="." GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                    <MFXButton maxHeight="40.0" maxWidth="60.0" minHeight="40.0" minWidth="60.0" onAction="#switchToPrimary" prefHeight="40.0" prefWidth="60.0" text="DEL" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                    <MFXButton maxHeight="40.0" maxWidth="60.0" minHeight="40.0" minWidth="60.0" prefHeight="40.0" prefWidth="60.0" text="1" />
                 </children>
             </GridPane>
          </children>

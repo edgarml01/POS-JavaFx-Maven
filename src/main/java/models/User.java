@@ -9,44 +9,49 @@ package models;
  * @author egarm
  */
 public class User {
+
     private int id;
-    private String username;
+    private String nombre;
     private String password;
-    private int role;
+    private int rol_id;
 
     // Constructor, getters y setters
     public User (){};
     public User(int id, String username, String password) {
         this.id = id;
-        this.username = username;
+        this.nombre = username;
         this.password = password;
         
     }
 
-    public User(int id, String username, String password, int role) {
-        this.id = id;
-        this.username = username;
+    public User( String username, String password, int role) {
+        this.nombre = username;
         this.password = password;
-        this.role = role;
+        this.rol_id = role;
     }
     
     public User(int id, String username,  int role) {
         this.id = id;
-        this.username = username;
-        this.role = role;
+        this.nombre = username;
+        this.rol_id = role;
     }
 
     // Getters y setters
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
 
-    public String getUsername() { return username; }
-    public void setUsername(String username) { this.username = username; }
+    public String getNombre() { return nombre; }
+    public void setNombre(String nombre) { this.nombre = nombre; }
 
     public String getPassword() { return password; }
     public void setPassword(String password) { this.password = password; }
 
-    public int getRole() { return role; }
-    public void setRole(int role) { this.role = role; }
+    public int getRol_id() { return rol_id; }
+    public void setRol_id(int rol_id) { this.rol_id = rol_id; }
+
+    @Override
+    public String toString() {
+        return "User{" + "id=" + id + ", username=" + nombre + ", password=" + password + ", role=" + rol_id + '}';
+    }
     
 }

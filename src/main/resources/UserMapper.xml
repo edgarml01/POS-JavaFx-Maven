@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mappers.UserMapper">
+    <!-- Obtener un usuario por ID -->
+    <select id="getUserById" resultType="models.User">
+        SELECT * FROM users WHERE id = #{id}
+    </select>
+
+    <!-- Obtener todos los usuarios -->
+    <select id="getAllUsers" resultType="models.User">
+        SELECT * FROM users
+    </select>
+
+    <!-- Insertar un usuario -->
+    <insert id="insertUser">
+        INSERT INTO users (nombre, password, rol_id) VALUES (#{nombre,}, #{password}, #{rol_id})
+    </insert>
+
+    <!-- Actualizar un usuario -->
+    <update id="updateUser">
+        UPDATE users SET username = #{nombre}, password = #{password}, role = #{rol_id} WHERE id = #{id}
+    </update>
+
+    <!-- Eliminar un usuario -->
+    <delete id="deleteUser">
+        DELETE FROM users WHERE id = #{id}
+    </delete>
+
+    <select id="validateUser" resultType="models.User">
+	    SELECT id, nombre, password, rol_id
+	    FROM users 
+	    WHERE nombre = #{nombre} 
+</select>
+</mapper>

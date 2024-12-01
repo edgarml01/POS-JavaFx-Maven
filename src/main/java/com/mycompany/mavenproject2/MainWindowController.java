@@ -8,8 +8,7 @@ public class MainWindowController {
 
     @FXML
     private void switchToPrimary() throws IOException {
-        App.setRoot("primary");
-        StatService serv = new StatService();
-        
+        //App.setRoot("primary");
+        //jkStatService serv = new StatService();
     }
 }

@@ -72,6 +72,11 @@ public class DetalleVenta {
         this.precio_venta = precio_venta;
     }
 
+	@Override
+	public String toString() {
+		return "DetalleVenta{" + "id=" + id + ", ventaId=" + ventaId + ", productoId=" + productoId + ", cantidad=" + cantidad + ", precio_venta=" + precio_venta + ", producto=" + producto + ", productoCargado=" + productoCargado + '}';
+	}
+
     // Lazy loading del producto
     public Producto getProducto(SqliteConn connection) throws SQLException {
         if (!productoCargado) {

@@ -16,7 +16,7 @@
         <HBox spacing="20" style="-fx-background-color: #f5f5f5;">
          <ImageView fitHeight="46.0" fitWidth="49.0" opacity="0.89" pickOnBounds="true" preserveRatio="true">
             <image>
-               <Image url="@images/papelerias.png" />
+               <Image url="@images/Conalep-logo.png" />
             </image>
           
          </ImageView>

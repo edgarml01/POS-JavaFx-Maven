@@ -30,10 +30,10 @@ public class ProductoRepository implements IProductRepository {
     public void addProduct(Producto product) {
          String query = "INSERT INTO productos (nombre, stock, segmento_id, precio, costo) VALUES (?, ?, ?, ?, ?)";
         try (PreparedStatement statement = connection.prepareStatement(query)) {
-            statement.setString(1, product.getNombre());
-            statement.setInt(2, product.getStock());
-            statement.setInt(3, product.getSegmentoId());
-            statement.executeUpdate();
+//            statement.setString(1, product.getNombre());
+//            statement.setInt(2, product.getStock());
+//            statement.setInt(3, product.getSegmentoId());
+//            statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -45,14 +45,14 @@ public class ProductoRepository implements IProductRepository {
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setInt(1, id);
             ResultSet rs = statement.executeQuery();
-            if (rs.next()) {
-                return new Producto(rs.getInt("id"), 
-                        rs.getString("nombre"), 
-                        rs.getInt("stock"), 
-                        rs.getInt("segmento_id"),
-                        rs.getDouble("precio"),
-                        rs.getDouble("costo"));
-            }
+//            if (rs.next()) {
+//                return new Producto(rs.getInt("id"), 
+//                        rs.getString("nombre"), 
+//                        rs.getInt("stock"), 
+//                        rs.getInt("segmento_id"),
+//                        rs.getDouble("precio"),
+//                        rs.getDouble("costo"));
+//            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -66,12 +66,12 @@ public class ProductoRepository implements IProductRepository {
         try (Statement statement = connection.createStatement()) {
             ResultSet rs = statement.executeQuery(query);
             while (rs.next()) {
-                products.add(new Producto(rs.getInt("id"), 
-                        rs.getString("nombre"), 
-                        rs.getInt("stock"), 
-                        rs.getInt("segmento_id"),
-                        rs.getDouble("precio"),
-                        rs.getDouble("costo")));
+//                products.add(new Producto(rs.getInt("id"), 
+//                        rs.getString("nombre"), 
+//                        rs.getInt("stock"), 
+//                        rs.getInt("segmento_id"),
+//                        rs.getDouble("precio"),
+//                        rs.getDouble("costo")));
             }
         } catch (SQLException e) {
             e.printStackTrace();

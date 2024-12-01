@@ -30,11 +30,22 @@
         </dependency>
         
         <dependency>
+            <groupId>org.mindrot</groupId>
+            <artifactId>jbcrypt</artifactId>
+            <version>0.4</version>
+        </dependency>
+        
+        <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-fxml</artifactId>
             <version>13</version>
         </dependency>
 
+        <dependency>
+          <groupId>org.mybatis</groupId>
+          <artifactId>mybatis</artifactId>
+          <version>3.5.13</version>
+      </dependency>
 
         <dependency>
             <groupId>io.github.palexdev</groupId>
@@ -53,6 +64,7 @@
             <artifactId>sqlite-jdbc</artifactId>
             <version>3.42.0.0</version> <!-- Usa la última versión disponible -->
         </dependency>
+
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
@@ -83,6 +95,17 @@
                 <version>0.0.8</version>
                 <configuration>
                     <mainClass>com.mycompany.mavenproject2.App</mainClass>
+		      <systemProperties>
+            <systemProperty>
+                <key>ebean.props.file</key>
+                <value>${project.basedir}/application.properties</value>
+            </systemProperty>
+	    </systemProperties>
+                    <executable>${JAVA_HOME}/bin/java</executable>
+                <options>
+                    <option>--add-opens</option>
+                    <option>javafx.graphics/javafx.scene=org.controlsfx.controls</option>
+                </options>
                 </configuration>
                 <executions>
                     <execution>
@@ -90,6 +113,7 @@
                         <!-- Usage: mvn clean javafx:run -->
                         <id>default-cli</id>
                     </execution>
+                    
                 </executions>
             </plugin>
            

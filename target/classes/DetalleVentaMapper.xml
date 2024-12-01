@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mappers.DetalleVentaMapper">
+    <!-- Seleccionar todos los detalles de venta -->
+    <select id="getAllDetalleVentas" resultType="models.DetalleVenta">
+        SELECT * FROM detallesVenta;
+    </select>
+
+    <!-- Seleccionar un detalle de venta por ID -->
+    <select id="getDetalleVentaById" resultType="models.DetalleVenta">
+        SELECT * FROM detallesVenta WHERE id = #{id};
+    </select>
+
+    <!-- Insertar un detalle de venta -->
+    <insert id="insertDetalleVenta" parameterType="models.DetalleVenta" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO detallesVenta (venta_id, producto_id, cantidad, precio_unitario, subtotal)
+        VALUES (#{venta_id}, #{producto_id}, #{cantidad}, #{precio_unitario}, #{subtotal});
+    </insert>
+
+    <!-- Actualizar un detalle de venta -->
+    <update id="updateDetalleVenta" parameterType="models.DetalleVenta">
+        UPDATE detallesVenta
+        SET venta_id = #{venta_id}, producto_id = #{producto_id}, cantidad = #{cantidad}, precio_unitario = #{precio_unitario}, subtotal = #{subtotal}
+        WHERE id = #{id};
+    </update>
+
+    <!-- Eliminar un detalle de venta -->
+    <delete id="deleteDetalleVenta">
+        DELETE FROM detallesVenta WHERE id = #{id};
+    </delete>
+</mapper>

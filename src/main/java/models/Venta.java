@@ -59,6 +59,11 @@ public class Venta {
     public void setFecha(LocalDateTime fecha) {
         this.fecha = fecha;
     }
+
+	@Override
+	public String toString() {
+		return "Venta{" + "id=" + id + ", total=" + total + ", fecha=" + fecha + ", detallesVentas=" + detallesVentas + '}';
+	}
     
      public List<DetalleVenta> cargarDetalles(Connection connection) throws SQLException {
         if (detallesVentas == null) {

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mappers.ProductoMapper">
+    <!-- Seleccionar todos los productos -->
+    <select id="getAllProductos" resultType="models.Producto">
+        SELECT * FROM productos;
+    </select>
+
+    <!-- Seleccionar un producto por su ID -->
+    <select id="getProductoById" resultType="models.Producto">
+        SELECT * FROM productos WHERE id = #{id};
+    </select>
+
+     <insert id="insertProducto" parameterType="models.Producto" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO productos (nombre, costo, precio, stock, segmento_id) 
+        VALUES (#{nombre}, #{costo}, #{precio}, #{stock}, #{segmento_id})
+    </insert>
+
+    <!-- Actualizar un producto -->
+    <update id="updateProducto" parameterType="models.Producto">
+        UPDATE productos 
+        SET nombre = #{nombre}, costo = #{costo}, precio = #{precio}, stock = #{stock}, segmento_id = #{segmento_id}
+        WHERE id = #{id}
+    </update>
+
+    <update id="updateStock">
+        UPDATE productos 
+        SET stock = #{stock}
+        WHERE id = #{id}
+    </update>
+
+    <!-- Eliminar un producto -->
+    <delete id="deleteProducto">
+        DELETE FROM productos WHERE id = #{id}
+    </delete>
+</mapper>

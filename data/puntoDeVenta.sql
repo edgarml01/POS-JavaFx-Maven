@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS segmentos (
 -- Tabla Usuarios
 CREATE TABLE IF NOT EXISTS users(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    nombre TEXT NOT NULL,
+    nombre TEXT NOT NULL UNIQUE,
     password TEXT NOT NULL,
     rol_id INTEGER,
     FOREIGN KEY (rol_id) REFERENCES Roles(id)

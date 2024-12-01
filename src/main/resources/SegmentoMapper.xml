@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mappers.SegmentoMapper">
+    <!-- Seleccionar todos los segmentos -->
+    <select id="getSegmentoById" resultType="models.Segmento">
+        SELECT * FROM segmentos WHERE id = #{id};
+    </select>
+
+    <select id="getAllSegmentos" resultType="models.Segmento">
+        SELECT * FROM segmentos
+    </select>
+
+    <!-- Insertar un segmento -->
+    <insert id="insertSegmento" parameterType="models.Segmento" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO segmentos (nombre, descripcion) 
+        VALUES (#{nombre}, #{descripcion})
+    </insert>
+
+    <!-- Actualizar un segmento -->
+    <update id="updateSegmento" parameterType="models.Segmento">
+        UPDATE segmentos 
+        SET nombre = #{nombre}, descripcion = #{descripcion}
+        WHERE id = #{id}
+    </update>
+
+    <!-- Eliminar un segmento -->
+    <delete id="deleteSegmento">
+        DELETE FROM segmentos WHERE id = #{id}
+    </delete>
+</mapper>

@@ -56,8 +56,7 @@ public class UserRepository implements IUserRepository{
             return new User(
                 resultSet.getInt("id"),
                 resultSet.getString("nombre"),
-                resultSet.getString("password")
-                //resultSet.getString("role")
+                resultSet.getInt("rol_id")
             );
         }
         return null;}

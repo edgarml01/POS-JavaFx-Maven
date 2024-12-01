@@ -21,6 +21,8 @@ public class Segmento {
         this.descripcion = descripcion;
     }
 
+    public Segmento(){}
+
     public Segmento(int id, String nombre, String descripcion) {
         this.id = id;
         this.nombre = nombre;
@@ -39,6 +41,11 @@ public class Segmento {
     public void setId(int id) {
         this.id = id;
     }
+
+	@Override
+	public String toString() {
+		return "Segmento{" + "id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + '}';
+	}
 
     public String getNombre() {
         return nombre;
