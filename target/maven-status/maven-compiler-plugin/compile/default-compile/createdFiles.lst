@@ -12,6 +12,7 @@ mappers\VentaMapper.class
 models\Producto.class
 repositories\DetalleVentaRepository.class
 models\User.class
+com\mycompany\mavenproject2\UsuariosViewController.class
 com\mycompany\mavenproject2\Session.class
 mappers\ProductoMapper.class
 repositories\VentaRepository.class
