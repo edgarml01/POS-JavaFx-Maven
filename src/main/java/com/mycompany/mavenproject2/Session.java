@@ -14,7 +14,7 @@ public class Session {
     private static User user;
 
 	public static User getUser() {
-		return user;
+		return Session.user;
 	}
 
 	public static void setUser(User user) {

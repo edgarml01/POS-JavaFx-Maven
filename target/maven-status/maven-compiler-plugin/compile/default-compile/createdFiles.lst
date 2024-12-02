@@ -7,6 +7,7 @@ com\mycompany\mavenproject2\SecondaryController.class
 repositories\ProductoRepository.class
 com\mycompany\mavenproject2\MainWindowController.class
 interfaces\IVentaRepostitory.class
+com\mycompany\mavenproject2\UserFormController.class
 models\Segmento.class
 mappers\VentaMapper.class
 models\Producto.class

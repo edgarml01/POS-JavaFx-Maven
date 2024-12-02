@@ -62,13 +62,16 @@ public class LoginController implements Initializable {
 	  try {
 	       User u = usersMapper.validateUser(textlbl.getText());
 	       if (u != null && BCrypt.checkpw(pswLbl.getText(), u.getPassword())) {
-		    App.setRoot("mainWindow");
 		    Session.setUser(u);
+		    App.setRoot("mainWindow");
+	       System.out.println("Todo correcto");
 	       } else {
 		    invalidationLabel.setVisible(true);
 	       }
 	  } catch (Exception ex) {
+		  System.out.println("Algo salio mal ");
 	       System.out.println(ex.getMessage());
+	       ex.printStackTrace();
 	  }
      }
 }

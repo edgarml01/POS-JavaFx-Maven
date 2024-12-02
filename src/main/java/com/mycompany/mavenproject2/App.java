@@ -7,7 +7,6 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.SQLException;
-import org.apache.ibatis.session.SqlSessionFactory;
 
 
 /**
@@ -20,7 +19,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException, SQLException {
-        scene = new Scene(loadFXML("secondary"));
+        scene = new Scene(loadFXML("login"));
         stage.setScene(scene);
         stage.show();
     }
