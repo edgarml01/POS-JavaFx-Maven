@@ -4,6 +4,7 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.mavenproject2.ProductosViewController">
    <center>
@@ -14,11 +15,15 @@
         <TableColumn fx:id="colPrecio" text="Precio" />
         <TableColumn fx:id="colCosto" text="Costo" />
         <TableColumn fx:id="colSegmento" text="Segmento" />
-        <TableColumn fx:id="colActions" text="Actions" />
+        <TableColumn fx:id="colActions" prefWidth="189.0" text="Actions" />
     </columns>
 </TableView>
    </center>
    <top>
-      <JFXButton BorderPane.alignment="CENTER" />
+      <HBox prefHeight="32.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <JFXButton text="Agregar producto" />
+         </children>
+      </HBox>
    </top>
 </BorderPane>

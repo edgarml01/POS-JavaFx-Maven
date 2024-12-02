@@ -1,11 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.mavenproject2.UsuariosViewController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="416.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.mavenproject2.UsuariosViewController">
    <center>
-	   <TableView fx:id="userTable" prefHeight="400" prefWidth="600">
+	   <TableView fx:id="userTable" prefHeight="368.0" prefWidth="511.0">
     <columns>
         <TableColumn fx:id="colId" text="ID" />
         <TableColumn fx:id="colNombre" text="Nombre" />
@@ -14,6 +17,10 @@
 </TableView>
    </center>
    <top>
-      <JFXButton BorderPane.alignment="CENTER" />
+      <HBox prefHeight="32.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <JFXButton text="Nuevo Uusario" />
+         </children>
+      </HBox>
    </top>
 </BorderPane>
