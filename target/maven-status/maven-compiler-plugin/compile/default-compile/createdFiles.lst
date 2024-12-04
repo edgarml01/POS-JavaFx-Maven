@@ -28,5 +28,6 @@ interfaces\IDetallesVentaRepository.class
 com\mycompany\mavenproject2\App.class
 com\mycompany\mavenproject2\LoginController.class
 com\mycompany\mavenproject2\MyBatisUtil.class
+com\mycompany\mavenproject2\ProductoCardController.class
 models\Venta.class
 models\Rol.class

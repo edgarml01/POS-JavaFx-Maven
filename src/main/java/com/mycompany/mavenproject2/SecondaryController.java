@@ -11,6 +11,8 @@ import com.jfoenix.transitions.hamburger.HamburgerSlideCloseTransition;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -47,15 +49,16 @@ public class SecondaryController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-        initDrawler();
     }    
     
     @FXML
     private void switchToPrimary(ActionEvent event) {
-        HamburgerSlideCloseTransition task = new HamburgerSlideCloseTransition(hamburger);
-        task.setRate(1);
-        task.play();
+
+	    try {
+		    App.setRoot("mainWindow",918,600);
+	    } catch (IOException ex) {
+		    System.out.println("Algo sali mal con el logout");
+	    }
     }
     
     
@@ -63,7 +66,6 @@ public class SecondaryController implements Initializable {
     private void cargarUsuariosView(ActionEvent event) {
         try {
             loadFXMLIntoCenter("usuariosView");
-            System.out.println("Cambiando a la vista corespondiente");
         } catch (Exception e) {
             System.out.println("Error al cargar el archivo FXML: " + e.getMessage());
         }
@@ -74,7 +76,6 @@ public class SecondaryController implements Initializable {
     private void cargarProdcutosView(ActionEvent event) {
         try {
             loadFXMLIntoCenter("productosView");
-            System.out.println("Cambiando a la vista corespondiente");
         } catch (Exception e) {
             System.out.println("Error al cargar el archivo FXML: " + e.getMessage());
         }
@@ -92,6 +93,10 @@ public class SecondaryController implements Initializable {
             e.printStackTrace();
             System.out.println("Error al cargar el archivo FXML: " + fxmlFile);
         }
+    }
+
+    @FXML
+    private void logout() {
     }
 
     private void initDrawler() {

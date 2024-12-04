@@ -1,29 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.mavenproject2.ProductosViewController">
-   <center>
-	   <TableView fx:id="userTable" prefHeight="400" prefWidth="600">
-    <columns>
-        <TableColumn fx:id="colId" text="ID" />
-        <TableColumn fx:id="colNombre" text="Nombre" />
-        <TableColumn fx:id="colPrecio" text="Precio" />
-        <TableColumn fx:id="colCosto" text="Costo" />
-        <TableColumn fx:id="colSegmento" text="Segmento" />
-        <TableColumn fx:id="colActions" prefWidth="189.0" text="Actions" />
-    </columns>
-</TableView>
-   </center>
-   <top>
-      <HBox prefHeight="32.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="555.0" prefWidth="802.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.mavenproject2.ProductosViewController">
+   <children>
+      <HBox prefHeight="42.0" prefWidth="775.0" VBox.vgrow="NEVER">
          <children>
-            <JFXButton text="Agregar producto" />
+            <MFXButton text="Agregar Producto">
+               <HBox.margin>
+                  <Insets left="17.0" right="1.0" top="3.0" />
+               </HBox.margin>
+            </MFXButton>
          </children>
       </HBox>
-   </top>
-</BorderPane>
+      <TableView fx:id="userTable" prefHeight="501.0" prefWidth="793.0" VBox.vgrow="ALWAYS">
+         <columns>
+            <TableColumn fx:id="colId" text="ID" />
+            <TableColumn fx:id="colNombre" prefWidth="97.0" text="Nombre" />
+            <TableColumn fx:id="colPrecio" prefWidth="89.0" text="Precio" />
+            <TableColumn fx:id="colCosto" prefWidth="65.0" text="Costo" />
+            <TableColumn fx:id="colSegmento" prefWidth="134.0" text="Segmento" />
+            <TableColumn fx:id="colActions" prefWidth="300.0" text="Actions" />
+         </columns>
+      </TableView>
+   </children>
+</VBox>

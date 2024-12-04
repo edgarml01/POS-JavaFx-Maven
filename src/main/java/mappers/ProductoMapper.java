@@ -13,6 +13,7 @@ import org.apache.ibatis.annotations.Param;
  */
 public interface ProductoMapper {
     List<Producto> getAllProductos();
+    List<Producto> getProductosByNombre(@Param("nombre") String nombre);
     Producto getProductoById();
     Producto insertProducto(Producto producto);
     void updateProducto(Producto producto);

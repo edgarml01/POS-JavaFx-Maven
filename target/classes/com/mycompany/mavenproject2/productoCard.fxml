@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox fx:id="maiCard" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="152.0" prefWidth="174.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.mavenproject2.ProductoCardController">
+   <children>
+      <MFXButton fx:id="prodcutoButton" text=" ">
+         <graphic>
+            <ImageView fitHeight="88.0" fitWidth="104.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/product.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </MFXButton>
+      <Label fx:id="nombreLabel" prefHeight="17.0" prefWidth="135.0" text="Holas" />
+      <Label fx:id="precioLabel" prefHeight="17.0" prefWidth="137.0" text="Holas" />
+   </children>
+</VBox>

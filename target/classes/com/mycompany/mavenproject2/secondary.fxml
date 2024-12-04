@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
@@ -28,7 +29,7 @@
                   <Image url="@images/user.jpg" />
                </image>
             </ImageView>
-            <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" graphicTextGap="5" prefHeight="47.0" prefWidth="155.0" style="-fx-font-size: 16;" text="Administrador" />
+            <Label fx:id="userLabel" prefHeight="42.0" prefWidth="156.0" style="-fx-font-size: 18; -fx-font-weight: bold;" text="user" />
 
 
             </HBox>
@@ -83,10 +84,13 @@
             <cursor>
                <Cursor fx:constant="HAND" />
             </cursor></JFXButton>
-            <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" graphicTextGap="10" nodeOrientation="LEFT_TO_RIGHT" prefHeight="42.0" prefWidth="235.0" style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-text-alignment: center;" text="Salir" textAlignment="CENTER">
+            <JFXButton fx:id="logoutButton" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" graphicTextGap="10" nodeOrientation="LEFT_TO_RIGHT" onAction="#switchToPrimary" prefHeight="42.0" prefWidth="235.0" style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-text-alignment: center;" text="Salir" textAlignment="CENTER">
             <cursor>
                <Cursor fx:constant="HAND" />
-            </cursor></JFXButton>
+            </cursor>
+            <VBox.margin>
+               <Insets left="10.0" right="10.0" />
+            </VBox.margin></JFXButton>
         </VBox>
     </left>
 

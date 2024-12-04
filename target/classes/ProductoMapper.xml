@@ -8,6 +8,10 @@
         SELECT * FROM productos;
     </select>
 
+    <select id="getProductosByNombre" resultType="models.Producto">
+        SELECT * FROM productos WHERE nombre LIKE '%' || #{nombre} || '%';
+    </select>
+
     <!-- Seleccionar un producto por su ID -->
     <select id="getProductoById" resultType="models.Producto">
         SELECT * FROM productos WHERE id = #{id};
