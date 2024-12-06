@@ -11,7 +11,7 @@
    <children>
       <HBox prefHeight="42.0" prefWidth="775.0" VBox.vgrow="NEVER">
          <children>
-            <MFXButton text="Agregar Producto">
+            <MFXButton fx:id="addProductoButton" onAction="#showFormulario" text="Agregar Producto">
                <HBox.margin>
                   <Insets left="17.0" right="1.0" top="3.0" />
                </HBox.margin>

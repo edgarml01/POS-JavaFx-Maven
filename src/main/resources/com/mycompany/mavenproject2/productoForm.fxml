@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXComboBox?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="482.0" prefWidth="277.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.mavenproject2.ProductoFormController">
+   <children>
+      <Label prefHeight="33.0" prefWidth="218.0" text="Nombre" />
+      <MFXTextField fx:id="nombreTextField" prefHeight="33.0" prefWidth="224.0" />
+      <Label prefHeight="33.0" prefWidth="225.0" text="Stock" />
+      <MFXTextField fx:id="stockTextField" prefHeight="49.0" prefWidth="221.0" />
+      <Label prefHeight="33.0" prefWidth="227.0" text="Precio" />
+      <MFXTextField fx:id="precioTextField" prefHeight="33.0" prefWidth="224.0" />
+      <Label prefHeight="33.0" prefWidth="226.0" text="Costo" />
+      <MFXTextField fx:id="costoTextField" prefHeight="33.0" prefWidth="224.0" />
+      <Label prefHeight="33.0" prefWidth="221.0" text="Segmento" />
+      <MFXComboBox fx:id="segmentoBox" prefHeight="40.0" prefWidth="225.0" />
+      <HBox alignment="CENTER" prefHeight="68.0" prefWidth="180.0">
+         <children>
+            <MFXButton fx:id="aceptarButton" text="Aceptar" />
+            <MFXButton style="-fx-background-color: red;" text="Cancelar" textFill="#f2eded">
+               <HBox.margin>
+                  <Insets left="12.0" />
+               </HBox.margin>
+            </MFXButton>
+         </children>
+      </HBox>
+   </children>
+   <opaqueInsets>
+      <Insets left="15.0" />
+   </opaqueInsets>
+   <padding>
+      <Insets bottom="4.0" left="18.0" right="29.0" top="14.0" />
+   </padding>
+</VBox>

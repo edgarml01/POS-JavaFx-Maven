@@ -18,7 +18,7 @@
             <Image url="@images/Conalep-logo.png" />
          </image>
       </ImageView>
-      <Label id="name" fx:id="name" text="Inicair Sesión" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS">
+      <Label id="name" fx:id="name" text="Iniciar Sesión" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS">
          <font>
             <Font size="31.0" />
          </font></Label>

@@ -5,8 +5,6 @@ import io.github.palexdev.materialfx.controls.MFXTextField;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -16,13 +14,12 @@ import org.controlsfx.validation.ValidationSupport;
 import org.controlsfx.validation.Validator;
 import org.mindrot.jbcrypt.BCrypt;
 import mappers.UserMapper;
-import mappers.VentaMapper;
 import models.User;
-import models.Venta;
 
 public class LoginController implements Initializable {
 
      private UserMapper usersMapper;
+private SqlSession session;
 
      @FXML
      protected MFXPasswordField pswLbl;
@@ -43,7 +40,7 @@ public class LoginController implements Initializable {
      public void initialize(URL url, ResourceBundle rb) {
 	  ValidationSupport vl = new ValidationSupport();
 	  try {
-	       SqlSession session = MyBatisUtil.getSession();
+	       session = MyBatisUtil.getSession();
 	       usersMapper = session.getMapper(UserMapper.class);
 	  } catch (Exception e) {
 	       System.out.println(e.getMessage());
@@ -64,6 +61,8 @@ public class LoginController implements Initializable {
 	       if (u != null && BCrypt.checkpw(pswLbl.getText(), u.getPassword())) {
 		    Session.setUser(u);
 		    App.setRoot("mainWindow",918,600);
+		    
+		       session.close();
 	       System.out.println("Todo correcto");
 	       } else {
 		    invalidationLabel.setVisible(true);

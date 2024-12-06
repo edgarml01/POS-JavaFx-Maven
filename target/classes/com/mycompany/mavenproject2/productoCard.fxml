@@ -19,5 +19,6 @@
       </MFXButton>
       <Label fx:id="nombreLabel" prefHeight="17.0" prefWidth="135.0" text="Holas" />
       <Label fx:id="precioLabel" prefHeight="17.0" prefWidth="137.0" text="Holas" />
+      <Label fx:id="stockLabel" prefHeight="17.0" prefWidth="137.0" text="Label" />
    </children>
 </VBox>

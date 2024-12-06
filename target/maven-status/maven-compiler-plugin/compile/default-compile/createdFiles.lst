@@ -2,6 +2,7 @@ mappers\RolMapper.class
 mappers\SegmentoMapper.class
 interfaces\IProductRepository.class
 mappers\DetalleVentaMapper.class
+com\mycompany\mavenproject2\ProductoFormController.class
 Services\StatService.class
 com\mycompany\mavenproject2\SecondaryController.class
 repositories\ProductoRepository.class
@@ -30,4 +31,5 @@ com\mycompany\mavenproject2\LoginController.class
 com\mycompany\mavenproject2\MyBatisUtil.class
 com\mycompany\mavenproject2\ProductoCardController.class
 models\Venta.class
+com\mycompany\mavenproject2\MainWindowController$1.class
 models\Rol.class

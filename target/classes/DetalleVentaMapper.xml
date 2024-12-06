@@ -15,8 +15,8 @@
 
     <!-- Insertar un detalle de venta -->
     <insert id="insertDetalleVenta" parameterType="models.DetalleVenta" useGeneratedKeys="true" keyProperty="id">
-        INSERT INTO detallesVenta (venta_id, producto_id, cantidad, precio_unitario )
-        VALUES (#{venta_id}, #{producto_id}, #{cantidad}, #{precio_unitario} );
+        INSERT INTO detallesVenta (venta_id, producto_id, cantidad, precio_venta)
+        VALUES (#{venta_id}, #{producto_id}, #{cantidad}, #{precio_venta} );
     </insert>
 
     <!-- Actualizar un detalle de venta -->

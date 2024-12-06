@@ -1,5 +1,7 @@
 package com.mycompany.mavenproject2;
 
+import com.jfoenix.controls.JFXListCell;
+import com.jfoenix.controls.JFXListView;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import java.io.IOException;
 import java.net.URL;
@@ -8,6 +10,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -18,8 +21,14 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
 import org.apache.ibatis.session.SqlSession;
+import javafx.collections.ObservableList;
 import models.Producto;
 import mappers.ProductoMapper;
+import mappers.VentaMapper;
+import mappers.DetalleVentaMapper;
+import models.Venta;
+import models.DetalleVenta;
+import org.controlsfx.control.Notifications;
 
 public class MainWindowController implements Initializable {
 
@@ -35,12 +44,21 @@ public class MainWindowController implements Initializable {
 	private Label totalLabel;
 	@FXML
 	private FlowPane productsFlowPane;
+	private double res = 0;
 
 	private SqlSession session = MyBatisUtil.getSession();
 
 	private List<Producto> productos;
 
-	private HashMap<Integer, Integer> carrito;
+	private ObservableList<Producto> carrito;
+
+	private Producto selectedProducto;
+
+	private String cantidadStr = "";
+
+	private boolean fistCantidad = true;
+
+	private HashMap<Integer, Integer> productosConCantidad = new HashMap<>();
 
 	@FXML
 	private MFXButton adminButton;
@@ -48,10 +66,38 @@ public class MainWindowController implements Initializable {
 	private ScrollPane productosScrollPane;
 	@FXML
 	private Label userLabel;
+	@FXML
+	private JFXListView<Producto> carritoListView;
+	@FXML
+	private Label instructionLabel;
+	@FXML
+	private MFXButton button6;
+	@FXML
+	private MFXButton button5;
+	@FXML
+	private MFXButton button2;
+	@FXML
+	private MFXButton button9;
+	@FXML
+	private MFXButton buttonAdd;
+	@FXML
+	private MFXButton button0;
+	@FXML
+	private MFXButton buttonDel;
+	@FXML
+	private MFXButton button1;
+	@FXML
+	private MFXButton logoutButton;
+	@FXML
+	private Label cantidadLabel;
+	@FXML
+	private MFXButton finalizarButton;
+	@FXML
+	private MFXButton eliminarButton;
 
 	@FXML
 	private void switchToDashboard() throws IOException {
-		App.setRoot("secondary", 1006,662);
+		App.setRoot("secondary", 1006, 662);
 		//jkStatService serv = new StatService();
 	}
 
@@ -63,7 +109,7 @@ public class MainWindowController implements Initializable {
 	}
 
 	private void addProductoCarrito(int producto_id) {
-		carrito.put(producto_id, carrito.getOrDefault(producto_id, 0) + 1);
+		//carrito.put(producto_id, carrito.getOrDefault(producto_id, 0) + 1);
 	}
 
 	private void updatePanelProductos() {
@@ -78,39 +124,227 @@ public class MainWindowController implements Initializable {
 			}
 
 		} catch (IOException ex) {
-			System.out.println("Salio mal algo jaja" + ex.getMessage());
+			System.out.println("Salio mal algo" + ex.getMessage());
 			Logger.getLogger(MainWindowController.class.getName()).log(Level.SEVERE, null, ex);
 		}
 
 	}
-    @FXML
-    private void logout() {
+
+	@FXML
+	private void logout() {
 		try {
-			App.setRoot("login",337,524);
+			App.setRoot("login", 337, 524);
 			Session.setUser(null);
 		} catch (IOException ex) {
 			System.out.println("Algo sali mal con el logout");
-			
+
 		}
-    }
+	}
 
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
-		if (Session.getUser().getRol_id() != 1){
+		if (Session.getUser().getRol_id() != 1) {
 			adminButton.setVisible(false);
 		}
 		userLabel.setText(Session.getUser().getNombre());
 
 		productsFlowPane.maxWidthProperty().bind(productosScrollPane.widthProperty());
+		carrito = FXCollections.observableArrayList();
+		carritoListView.setItems(carrito);
 
-		carrito = new HashMap<>();
+		carritoListView.setCellFactory(listView -> new JFXListCell<Producto>() {
+			@Override
+			protected void updateItem(Producto producto, boolean empty) {
+				super.updateItem(producto, empty);
+				if (producto != null) {
+					int cantidad = productosConCantidad.get(producto.getId());
+					// Define el texto o diseño que se mostrará
+					setText(producto.getNombre() + " x " + cantidad);
 
+				}
+
+			}
+		});
 		productos = session.getMapper(ProductoMapper.class).getAllProductos();
 		updatePanelProductos();
 
 	}
 
-	public void hadleClick(Producto producto) {
-		addProductoCarrito(producto.getId());
+	@FXML
+	private void finalizarVenta() {
+		try {
+		Venta v = new Venta(calcularTotal());
+		session.getMapper(VentaMapper.class).insertVenta(v);
+		System.out.println(v);
+
+		double totalAux  = calcularTotal();
+		for (Producto producto : carrito) {
+			int cantidad = productosConCantidad.get(producto.getId());
+			DetalleVenta dv = new  DetalleVenta(v.getId(), producto.getId(), cantidad, producto.getPrecio());
+			session.getMapper(ProductoMapper.class).updateStock(producto.getId(), producto.getStock() - cantidad);
+			session.getMapper(DetalleVentaMapper.class).insertDetalleVenta(dv);
+		}
+		session.commit();
+
+		productos = session.getMapper(ProductoMapper.class).getAllProductos();
+		updatePanelProductos();
+		carrito.clear();
+		productosConCantidad.clear();
+		totalLabel.setText("Total $ 0 ");
+			
+		} catch (Exception e) {
+			System.out.println("Algo sali mal con la finalizacion de la venta");
+			System.out.println(e.getMessage());
+		}
 	}
+
+	@FXML
+	private void deleteFromCarrito() {
+		Producto p = carritoListView.getSelectionModel().getSelectedItem();
+		for (int i = 0; i < carrito.size(); i++) {
+			if (carrito.get(i).getId() == p.getId()) {
+				carrito.remove(i);
+				productosConCantidad.remove(p.getId());
+			}
+		}
+		totalLabel.setText("Total $ " + calcularTotal());
+	}
+
+	private double calcularTotal(){
+		res = 0;
+		for (Producto producto : carrito) {
+			int cantidad = productosConCantidad.get(producto.getId());
+			res += cantidad * producto.getPrecio();
+		}
+
+		return res;
+	}
+
+	@FXML
+	private void addProducto() {
+		if (selectedProducto == null) {
+			System.out.println("Producto nulo");
+			return;
+		}
+
+		if (!cantidadStr.isEmpty() && Integer.parseInt(cantidadStr) > selectedProducto.getStock()) {
+			Notifications.create()
+				.title("Stock Insuficiente")
+				.text("No hay suficiente stock de " + selectedProducto.getNombre())
+				.showInformation();
+			cantidadStr = "";
+			fistCantidad = true;
+			instructionLabel.setText("Seleccione un producto");
+			cantidadLabel.setText("");
+
+			return;
+		}
+
+		if (productosConCantidad.containsKey(selectedProducto.getId())) {
+			System.out.println("El producto ya existe");
+			// Si el producto ya existe, actualizamos la cantidad
+			int cantidadActual = productosConCantidad.get(selectedProducto.getId());
+			productosConCantidad.put(selectedProducto.getId(), cantidadActual + Integer.parseInt(!fistCantidad ? cantidadStr : "1"));
+			carritoListView.refresh();
+		} else {
+			System.out.println("El producto no existe en el carrito");
+			// Si el producto no existe, lo agregamos al map con la cantidad
+			productosConCantidad.put(selectedProducto.getId(), Integer.parseInt(!fistCantidad ? cantidadStr : "1"));
+			productosConCantidad.put(selectedProducto.getId(), Integer.parseInt(!fistCantidad ? cantidadStr : "1"));
+			carrito.add(selectedProducto);
+		}
+		totalLabel.setText("Total $" + calcularTotal());
+		selectedProducto = null;
+		fistCantidad = true;
+		instructionLabel.setText("Seleccione un producto");
+		cantidadLabel.setText(" ");
+		cantidadStr = "";
+	}
+
+	public void hadleClick(Producto producto) {
+		selectedProducto = producto;
+		instructionLabel.setText("Ingrese la cantidad del producto");
+		cantidadLabel.setText("Cantidad: " + 1);
+	}
+
+	@FXML
+	private void button1() {
+		fistCantidad = false;
+		cantidadStr += 1;
+		cantidadLabel.setText("Cantidad: " + cantidadStr);
+	}
+
+	@FXML
+	private void button2() {
+		fistCantidad = false;
+		cantidadStr += 2;
+		cantidadLabel.setText("Cantidad: " + cantidadStr);
+	}
+
+	@FXML
+	private void button3() {
+		fistCantidad = false;
+		cantidadStr += 3;
+		cantidadLabel.setText("Cantidad: " + cantidadStr);
+	}
+
+	@FXML
+	private void button4() {
+		fistCantidad = false;
+		cantidadStr += 4;
+		cantidadLabel.setText("Cantidad: " + cantidadStr);
+	}
+
+	@FXML
+	private void button5() {
+		fistCantidad = false;
+		cantidadStr += 5;
+		cantidadLabel.setText("Cantidad: " + cantidadStr);
+	}
+
+	@FXML
+	private void button6() {
+		fistCantidad = false;
+		cantidadStr += 6;
+		cantidadLabel.setText("Cantidad: " + cantidadStr);
+	}
+
+	@FXML
+	private void button7() {
+		fistCantidad = false;
+		cantidadStr += 7;
+		cantidadLabel.setText("Cantidad: " + cantidadStr);
+	}
+
+	@FXML
+	private void button8() {
+		fistCantidad = false;
+		cantidadStr += 8;
+		cantidadLabel.setText("Cantidad: " + cantidadStr);
+	}
+
+	private void button9() {
+		fistCantidad = false;
+		cantidadStr += 9;
+		cantidadLabel.setText("Cantidad: " + cantidadStr);
+	}
+
+	@FXML
+	private void button0() {
+		cantidadStr += 0;
+		fistCantidad = false;
+		cantidadLabel.setText("Cantidad: " + cantidadStr);
+	}
+
+	@FXML
+	private void buttonDel() {
+		if (cantidadStr != null && cantidadStr.length() > 0) {
+			// Eliminar el último carácter
+			cantidadStr = cantidadStr.substring(0, cantidadStr.length() - 1);
+		} else {
+			System.out.println("La cadena está vacía o es nula.");
+		}
+		cantidadLabel.setText("Cantidad: " + cantidadStr);
+	}
+
 }

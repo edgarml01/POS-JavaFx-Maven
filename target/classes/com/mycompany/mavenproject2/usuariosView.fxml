@@ -19,7 +19,7 @@
    <top>
       <HBox prefHeight="32.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <JFXButton text="Nuevo Uusario" />
+            <JFXButton onAction="#showFormulario" text="Nuevo Uusario" />
          </children>
       </HBox>
    </top>

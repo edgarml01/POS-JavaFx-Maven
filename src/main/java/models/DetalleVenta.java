@@ -15,8 +15,8 @@ import repositories.SqliteConn;
  */
 public class DetalleVenta {
     private int id;
-    private int ventaId;
-    private int productoId;
+    private int venta_id;
+    private int producto_id;
     private int cantidad;
     private double precio_venta;
     private Producto producto;
@@ -25,8 +25,14 @@ public class DetalleVenta {
 
     public DetalleVenta(int id, int ventaId, int productoId, int cantidad, double precioUnitario) {
         this.id = id;
-        this.ventaId = ventaId;
-        this.productoId = productoId;
+        this.venta_id = ventaId;
+        this.producto_id = productoId;
+        this.cantidad = cantidad;
+        this.precio_venta = precioUnitario;
+    }
+    public DetalleVenta( int ventaId, int productoId, int cantidad, double precioUnitario) {
+        this.venta_id = ventaId;
+        this.producto_id = productoId;
         this.cantidad = cantidad;
         this.precio_venta = precioUnitario;
     }
@@ -40,20 +46,20 @@ public class DetalleVenta {
         this.id = id;
     }
 
-    public int getVentaId() {
-        return ventaId;
+    public int getVenta_id() {
+        return venta_id;
     }
 
-    public void setVentaId(int ventaId) {
-        this.ventaId = ventaId;
+    public void setVenta_id(int venta_id) {
+        this.venta_id = venta_id;
     }
 
-    public int getProductoId() {
-        return productoId;
+    public int getProducto_id() {
+        return producto_id;
     }
 
-    public void setProductoId(int productoId) {
-        this.productoId = productoId;
+    public void setProducto_id(int producto_id) {
+        this.producto_id = producto_id;
     }
 
     public int getCantidad() {
@@ -82,7 +88,7 @@ public class DetalleVenta {
 
 	@Override
 	public String toString() {
-		return "DetalleVenta{" + "id=" + id + ", ventaId=" + ventaId + ", productoId=" + productoId + ", cantidad=" + cantidad + ", precio_venta=" + precio_venta + ", =" + ", productoCargado=" + producto+ '}';
+		return "DetalleVenta{" + "id=" + id + ", ventaId=" + venta_id + ", productoId=" + producto_id + ", cantidad=" + cantidad + ", precio_venta=" + precio_venta + ", =" + ", productoCargado=" + producto+ '}';
 	}
 
     // Lazy loading del producto

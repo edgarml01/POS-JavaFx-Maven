@@ -30,6 +30,8 @@ public class ProductoCardController implements Initializable {
 	private VBox maiCard;
 	@FXML
 	private MFXButton prodcutoButton;
+	@FXML
+	private Label stockLabel;
 
 	/**
 	 * Initializes the controller class.
@@ -49,5 +51,6 @@ public class ProductoCardController implements Initializable {
 		);
 		nombreLabel.setText("Nombre:" + model.getNombre());
 		precioLabel.setText("Precio:" + model.getPrecio()+"");
+		stockLabel.setText("Stock:" + model.getStock()+"");
 	    }
 }
