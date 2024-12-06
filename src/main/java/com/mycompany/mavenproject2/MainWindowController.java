@@ -323,6 +323,7 @@ public class MainWindowController implements Initializable {
 		cantidadLabel.setText("Cantidad: " + cantidadStr);
 	}
 
+	@FXML
 	private void button9() {
 		fistCantidad = false;
 		cantidadStr += 9;
