@@ -173,29 +173,37 @@ public class MainWindowController implements Initializable {
 	@FXML
 	private void finalizarVenta() {
 		try {
-		Venta v = new Venta(calcularTotal());
-		session.getMapper(VentaMapper.class).insertVenta(v);
-		System.out.println(v);
+			Venta v = new Venta(calcularTotal());
+			session.getMapper(VentaMapper.class).insertVenta(v);
 
-		double totalAux  = calcularTotal();
-		for (Producto producto : carrito) {
-			int cantidad = productosConCantidad.get(producto.getId());
-			DetalleVenta dv = new  DetalleVenta(v.getId(), producto.getId(), cantidad, producto.getPrecio());
-			session.getMapper(ProductoMapper.class).updateStock(producto.getId(), producto.getStock() - cantidad);
-			session.getMapper(DetalleVentaMapper.class).insertDetalleVenta(dv);
-		}
-		session.commit();
+			double totalAux = calcularTotal();
+			for (Producto producto : carrito) {
+				int cantidad = productosConCantidad.get(producto.getId());
+				int stockRestante = producto.getStock() - cantidad;
+				DetalleVenta dv = new DetalleVenta(v.getId(), producto.getId(), cantidad, producto.getPrecio());
+				session.getMapper(ProductoMapper.class).updateStock(producto.getId(), stockRestante);
+				session.getMapper(DetalleVentaMapper.class).insertDetalleVenta(dv);
+				if (stockRestante <= 10 ) alertaStock(producto, stockRestante);
+			}
+			session.commit();
 
-		productos = session.getMapper(ProductoMapper.class).getAllProductos();
-		updatePanelProductos();
-		carrito.clear();
-		productosConCantidad.clear();
-		totalLabel.setText("Total $ 0 ");
-			
+			productos = session.getMapper(ProductoMapper.class).getAllProductos();
+			updatePanelProductos();
+			carrito.clear();
+			productosConCantidad.clear();
+			totalLabel.setText("Total $ 0 ");
+
 		} catch (Exception e) {
 			System.out.println("Algo sali mal con la finalizacion de la venta");
 			System.out.println(e.getMessage());
 		}
+	}
+
+	private void alertaStock(Producto producto, int stock) {
+		Notifications.create()
+			.title("Alerta de stock")
+			.text("Queda muy poco stock de " + producto.getNombre() + " quedan " + stock + " unidades.")
+			.showWarning();
 	}
 
 	@FXML
@@ -210,7 +218,7 @@ public class MainWindowController implements Initializable {
 		totalLabel.setText("Total $ " + calcularTotal());
 	}
 
-	private double calcularTotal(){
+	private double calcularTotal() {
 		res = 0;
 		for (Producto producto : carrito) {
 			int cantidad = productosConCantidad.get(producto.getId());
@@ -227,7 +235,7 @@ public class MainWindowController implements Initializable {
 			return;
 		}
 
-		if (!cantidadStr.isEmpty() && Integer.parseInt(cantidadStr) > selectedProducto.getStock()) {
+		if ((!cantidadStr.isEmpty() && Integer.parseInt(cantidadStr) > selectedProducto.getStock()) || (cantidadStr.isEmpty() && selectedProducto.getStock() == 0)) {
 			Notifications.create()
 				.title("Stock Insuficiente")
 				.text("No hay suficiente stock de " + selectedProducto.getNombre())
