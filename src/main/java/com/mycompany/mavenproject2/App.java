@@ -17,7 +17,7 @@ import javafx.scene.layout.Region;
 public class App extends Application {
 
     private static Scene scene;
-
+    private static Stage mainStage;
 
     @Override
     public void start(Stage stage) throws IOException, SQLException {
@@ -25,6 +25,7 @@ public class App extends Application {
         stage.setScene(scene);
 	Image icon = new Image(App.class.getResourceAsStream("/icon.png"));
 	stage.setTitle("POS CONALEP");
+	mainStage = stage;
 
 	stage.getIcons().add(icon);
         stage.show();
@@ -34,6 +35,11 @@ public class App extends Application {
         scene.setRoot(loadFXML(fxml));
 
     }
+
+    static Stage getMainStage(){
+	    return  mainStage;
+    }
+
     static void setRoot(String fxml, double width, double height) throws IOException {
     // Cargar el nuevo nodo raíz
     Parent root = loadFXML(fxml);

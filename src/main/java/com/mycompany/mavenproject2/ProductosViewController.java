@@ -5,6 +5,7 @@
 package com.mycompany.mavenproject2;
 
 import io.github.palexdev.materialfx.controls.MFXButton;
+import io.github.palexdev.materialfx.controls.MFXTextField;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -24,10 +25,17 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
+import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.List;
 import models.Producto;
 import mappers.ProductoMapper;
+import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.csv.CSVPrinter;
 
 /**
  * FXML Controller class
@@ -55,6 +63,8 @@ public class ProductosViewController implements Initializable {
 	private final ObservableList<Producto> userList = FXCollections.observableArrayList();
 	@FXML
 	private MFXButton addProductoButton;
+	@FXML
+	private MFXTextField buscarField;
 
 	/**
 	 * Initializes the controller class.
@@ -73,55 +83,57 @@ public class ProductosViewController implements Initializable {
 			colPrecio.setCellValueFactory(new PropertyValueFactory<>("precio"));
 			colCosto.setCellValueFactory(new PropertyValueFactory<>("costo"));
 			colStock.setCellValueFactory(new PropertyValueFactory<>("stock"));
-		        colSegmento.setCellValueFactory(new PropertyValueFactory<>("segmento_id"));
+			colSegmento.setCellValueFactory(new PropertyValueFactory<>("segmento_id"));
 			System.out.println("trono3");
-			colActions.setCellFactory(colum -> new TableCell<Producto, Void>(){
-				   private final Button btnEdit = new Button("Edit");
-				    private final Button btnDelete = new Button("Delete");
-				    private final HBox actionBox = new HBox(10, btnEdit, btnDelete);
-				    {
-				      btnEdit.setOnAction(event -> {
-					    Producto producto = getTableView().getItems().get(getIndex());
-					      showFormularioMod(producto);
-					    System.out.println("Editando: " + producto.getNombre());
+			colActions.setCellFactory(colum -> new TableCell<Producto, Void>() {
+				private final Button btnEdit = new Button("Edit");
+				private final Button btnDelete = new Button("Delete");
+				private final HBox actionBox = new HBox(10, btnEdit, btnDelete);
+
+				{
+					btnEdit.setOnAction(event -> {
+						Producto producto = getTableView().getItems().get(getIndex());
+						showFormularioMod(producto);
+						System.out.println("Editando: " + producto.getNombre());
 					});
 
 					btnDelete.setOnAction(event -> {
-					    Producto producto = getTableView().getItems().get(getIndex());
-					    Alert confirmDialog = new Alert(Alert.AlertType.CONFIRMATION);
-					    confirmDialog.setTitle("Confirmación de eliminación");
-					    confirmDialog.setHeaderText("¿Estás seguro de que deseas eliminar este recurso?");
-					    confirmDialog.setContentText("Producto: " + producto.getNombre());
+						Producto producto = getTableView().getItems().get(getIndex());
+						Alert confirmDialog = new Alert(Alert.AlertType.CONFIRMATION);
+						confirmDialog.setTitle("Confirmación de eliminación");
+						confirmDialog.setHeaderText("¿Estás seguro de que deseas eliminar este recurso?");
+						confirmDialog.setContentText("Producto: " + producto.getNombre());
 
-					    // Agregar botones personalizados
-					    ButtonType btnYes = new ButtonType("Sí", ButtonBar.ButtonData.YES);
-					    ButtonType btnNo = new ButtonType("No", ButtonBar.ButtonData.NO);
-					    confirmDialog.getButtonTypes().setAll(btnYes, btnNo);
+						// Agregar botones personalizados
+						ButtonType btnYes = new ButtonType("Sí", ButtonBar.ButtonData.YES);
+						ButtonType btnNo = new ButtonType("No", ButtonBar.ButtonData.NO);
+						confirmDialog.getButtonTypes().setAll(btnYes, btnNo);
 
-					    // Esperar por la respuesta del usuario
-					    confirmDialog.showAndWait().ifPresent(response -> {
-						if (response == btnYes) {
-						    // Aquí elimina el recurso de la lista y actualiza la tabla
-						    getTableView().getItems().remove(producto);
-						    userList.remove(producto);
-						    Session.getSQLSession().getMapper(ProductoMapper.class).deleteProducto(producto.getId());
-						    Session.getSQLSession().commit();
-						    System.out.println("Producto eliminado: " + producto.getNombre());
-						}
-					    });
+						// Esperar por la respuesta del usuario
+						confirmDialog.showAndWait().ifPresent(response -> {
+							if (response == btnYes) {
+								// Aquí elimina el recurso de la lista y actualiza la tabla
+								getTableView().getItems().remove(producto);
+								userList.remove(producto);
+								Session.getSQLSession().getMapper(ProductoMapper.class).deleteProducto(producto.getId());
+								Session.getSQLSession().commit();
+								System.out.println("Producto eliminado: " + producto.getNombre());
+							}
+						});
 					});
-			
-				    }
-				    @Override
-				    protected void updateItem(Void item, boolean empty) {
+
+				}
+
+				@Override
+				protected void updateItem(Void item, boolean empty) {
 					super.updateItem(item, empty);
 					if (empty) {
-					    setGraphic(null);
+						setGraphic(null);
 					} else {
-					    setGraphic(actionBox);
+						setGraphic(actionBox);
 					}
-				    }
-			
+				}
+
 			});
 
 			System.out.println("trono4");
@@ -130,15 +142,14 @@ public class ProductosViewController implements Initializable {
 				@Override
 				protected void updateItem(Integer segmento_id, boolean empty) {
 					super.updateItem(segmento_id, empty);
-					 if (empty || segmento_id == null) {
-					setText(null);
-				    } else {
-					setText(segmento_id == 1 ? "Papelería" : "Abarrotes");
-				    }
+					if (empty || segmento_id == null) {
+						setText(null);
+					} else {
+						setText(segmento_id == 1 ? "Papelería" : "Abarrotes");
+					}
 				}
 
 			});
-
 
 			userTable.setItems(userList);
 			System.out.println("trono5");
@@ -174,6 +185,47 @@ public class ProductosViewController implements Initializable {
 		}
 
 	}
+	@FXML
+	private void buscarProductos() {
+		List<Producto>productos = Session.getSQLSession().getMapper(ProductoMapper.class).getProductosByNombre(buscarField.getText());
+		userList.clear();
+		userList.addAll(productos);
+	}
+
+
+	@FXML
+	public void exportData() {
+		FileChooser fileChooser = new FileChooser();
+		fileChooser.setTitle("Guardar archivo CSV");
+		fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Archivo CSV", "*.csv"));
+		File selectedFile = fileChooser.showSaveDialog(App.getMainStage());
+		if (selectedFile != null) {
+			// Escribir los datos en el archivo seleccionado
+			try (FileWriter writer = new FileWriter(selectedFile); CSVPrinter csvPrinter = new CSVPrinter(writer, CSVFormat.DEFAULT.withHeader(
+				userTable.getColumns().stream()
+					.map(column -> column.getText())
+					.toArray(String[]::new)))) {
+
+				// Escribir las filas de datos
+				for (var item : userTable.getItems()) {
+					for (var column : userTable.getColumns()) {
+						Object cellValue = column.getCellData(item);
+						csvPrinter.print(cellValue != null ? cellValue : "");
+					}
+					csvPrinter.println(); // Nueva línea después de cada fila
+				}
+
+				System.out.println("CSV exportado exitosamente a: " + selectedFile.getAbsolutePath());
+			} catch (IOException e) {
+				e.printStackTrace();
+				System.err.println("Error al escribir el archivo CSV.");
+			}
+		} else {
+			System.out.println("No se seleccionó ningún archivo.");
+		}
+
+	}
+
 	private void showFormularioMod(Producto producto) {
 		try {
 			// Cargar el archivo FXML
@@ -193,7 +245,7 @@ public class ProductosViewController implements Initializable {
 
 			// Mostrar la ventana
 			stage.showAndWait(); // Espera hasta que se cierre la ventana
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

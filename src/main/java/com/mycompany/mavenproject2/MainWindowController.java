@@ -204,6 +204,9 @@ public class MainWindowController implements Initializable {
 	
 	@FXML
 	private void finalizarVenta() {
+		if (carrito.isEmpty()){
+			return;
+		}
 		try {
 			Venta v = new Venta(calcularTotal());
 			session.getMapper(VentaMapper.class).insertVenta(v);

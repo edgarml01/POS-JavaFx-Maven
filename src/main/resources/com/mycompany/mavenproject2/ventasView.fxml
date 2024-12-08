@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
 <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="510.0" prefWidth="754.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.mavenproject2.VentasViewController">
    <opaqueInsets>
@@ -23,12 +25,21 @@
             <Insets right="18.0" />
          </HBox.margin>
       </TableView>
-      <TableView fx:id="detallesTable" prefHeight="510.0" prefWidth="362.0">
-         <columns>
-            <TableColumn fx:id="colNombreProducto" text="Productos" />
-            <TableColumn fx:id="colCantidad" prefWidth="109.0" text="Cantidad" />
-            <TableColumn fx:id="colPrecioVenta" prefWidth="167.0" text="Precio de venta" />
-         </columns>
-      </TableView>
+      <VBox alignment="TOP_RIGHT">
+         <children>
+            <MFXButton onAction="#exportData" text="Exportar datos ">
+               <VBox.margin>
+                  <Insets bottom="7.0" />
+               </VBox.margin>
+            </MFXButton>
+            <TableView fx:id="detallesTable" prefHeight="510.0" prefWidth="362.0">
+               <columns>
+                  <TableColumn fx:id="colNombreProducto" text="Productos" />
+                  <TableColumn fx:id="colCantidad" prefWidth="109.0" text="Cantidad" />
+                  <TableColumn fx:id="colPrecioVenta" prefWidth="167.0" text="Precio de venta" />
+               </columns>
+            </TableView>
+         </children>
+      </VBox>
    </children>
 </HBox>
