@@ -2,17 +2,22 @@ mappers\RolMapper.class
 mappers\SegmentoMapper.class
 interfaces\IProductRepository.class
 mappers\DetalleVentaMapper.class
+com\mycompany\mavenproject2\UsuariosViewController$2.class
 com\mycompany\mavenproject2\ProductoFormController.class
 Services\StatService.class
 com\mycompany\mavenproject2\SecondaryController.class
 repositories\ProductoRepository.class
+com\mycompany\mavenproject2\StatsViewController.class
 com\mycompany\mavenproject2\MainWindowController.class
 interfaces\IVentaRepostitory.class
 com\mycompany\mavenproject2\UserFormController.class
 models\Segmento.class
+com\mycompany\mavenproject2\UsuariosViewController$1.class
+com\mycompany\mavenproject2\VentasViewController$1.class
 mappers\VentaMapper.class
 models\Producto.class
 repositories\DetalleVentaRepository.class
+com\mycompany\mavenproject2\ProductosViewController$1.class
 models\User.class
 com\mycompany\mavenproject2\UsuariosViewController.class
 com\mycompany\mavenproject2\Session.class
@@ -23,6 +28,7 @@ mappers\UserMapper.class
 models\DetalleVenta.class
 module-info.class
 interfaces\IUserRepository.class
+com\mycompany\mavenproject2\VentasViewController.class
 repositories\UserRepository.class
 com\mycompany\mavenproject2\ProductosViewController.class
 interfaces\IDetallesVentaRepository.class
@@ -32,4 +38,5 @@ com\mycompany\mavenproject2\MyBatisUtil.class
 com\mycompany\mavenproject2\ProductoCardController.class
 models\Venta.class
 com\mycompany\mavenproject2\MainWindowController$1.class
+com\mycompany\mavenproject2\ProductosViewController$2.class
 models\Rol.class

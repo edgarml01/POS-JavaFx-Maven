@@ -30,6 +30,7 @@ public class DetalleVenta {
         this.cantidad = cantidad;
         this.precio_venta = precioUnitario;
     }
+    public DetalleVenta(){}
     public DetalleVenta( int ventaId, int productoId, int cantidad, double precioUnitario) {
         this.venta_id = ventaId;
         this.producto_id = productoId;

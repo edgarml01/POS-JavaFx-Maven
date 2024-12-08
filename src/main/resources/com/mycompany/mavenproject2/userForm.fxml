@@ -12,7 +12,7 @@
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="304.0" prefWidth="376.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.mavenproject2.UserFormController">
    <children>
-      <Label prefHeight="31.0" prefWidth="207.0" text="Datos del nuevo Usuario">
+      <Label alignment="CENTER" prefHeight="31.0" prefWidth="318.0" text="Datos del Usuario">
          <font>
             <Font size="19.0" />
          </font>
@@ -47,9 +47,10 @@
             <MFXComboBox fx:id="rolBox" prefHeight="40.0" prefWidth="313.0" />
          </children>
       </HBox>
+      <Label fx:id="passwordLa" prefHeight="37.0" prefWidth="295.0" text="La contrasña es necesaria " textFill="#e11515" />
       <HBox alignment="CENTER" prefHeight="52.0" prefWidth="377.0">
          <children>
-            <MFXButton fx:id="aceptarButton" prefHeight="25.0" prefWidth="64.0" style="-fx-background-color: light-green;" text="Aceptar" />
+            <MFXButton fx:id="aceptarButton" onAction="#saveUser" prefHeight="25.0" prefWidth="64.0" style="-fx-background-color: light-green;" text="Aceptar" />
             <MFXButton prefHeight="25.0" prefWidth="76.0" rippleColor="#e10a0a" rippleRadius="41.0" style="-fx-background-color: red;" text="Cancelar" textFill="#f8f6f6">
                <HBox.margin>
                   <Insets left="20.0" />

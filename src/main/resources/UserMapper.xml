@@ -20,7 +20,7 @@
 
     <!-- Actualizar un usuario -->
     <update id="updateUser">
-        UPDATE users SET username = #{nombre}, password = #{password}, role = #{rol_id} WHERE id = #{id}
+        UPDATE users SET nombre= #{nombre}, password = #{password}, rol_id= #{rol_id} WHERE id = #{id}
     </update>
 
     <!-- Eliminar un usuario -->

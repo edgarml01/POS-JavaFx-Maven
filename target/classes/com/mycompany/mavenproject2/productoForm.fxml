@@ -22,7 +22,7 @@
       <MFXComboBox fx:id="segmentoBox" prefHeight="40.0" prefWidth="225.0" />
       <HBox alignment="CENTER" prefHeight="68.0" prefWidth="180.0">
          <children>
-            <MFXButton fx:id="aceptarButton" text="Aceptar" />
+            <MFXButton fx:id="aceptarButton" onAction="#saveProducto" text="Aceptar" />
             <MFXButton style="-fx-background-color: red;" text="Cancelar" textFill="#f2eded">
                <HBox.margin>
                   <Insets left="12.0" />

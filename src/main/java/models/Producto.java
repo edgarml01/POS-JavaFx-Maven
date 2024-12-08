@@ -23,6 +23,14 @@ public class Producto  {
     // Constructor, getters y setters
     public Producto() {}
 
+    public Producto(String nombre, double costo, double precio, int stock, int segmento) {
+        this.nombre = nombre;
+        this.costo = costo;
+        this.precio = precio;
+        this.stock = stock;
+        this.segmento_id = segmento;
+    }
+
     public Producto(int id, String nombre, double costo, double precio, int stock, int segmento) {
         this.id = id;
         this.nombre = nombre;

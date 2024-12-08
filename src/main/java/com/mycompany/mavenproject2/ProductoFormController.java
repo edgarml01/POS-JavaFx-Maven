@@ -9,13 +9,17 @@ import io.github.palexdev.materialfx.controls.MFXComboBox;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import java.net.URL;
 import models.Producto;
+import mappers.ProductoMapper;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
+import javafx.stage.Stage;
 import org.controlsfx.validation.Severity;
 import org.controlsfx.validation.ValidationSupport;
 import org.controlsfx.validation.Validator;
@@ -27,7 +31,7 @@ import org.controlsfx.validation.Validator;
  */
 public class ProductoFormController implements Initializable {
 
-	private Producto producto;
+	private Producto producto = null;
 	@FXML
 	private MFXTextField nombreTextField;
 	@FXML
@@ -48,6 +52,7 @@ public class ProductoFormController implements Initializable {
 	 */
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
+		System.out.println(producto);
 
 		ValidationSupport vl = new ValidationSupport();
 		vl.registerValidator(nombreTextField, Validator.createEmptyValidator("Ingresa el nombre del producto"));
@@ -62,14 +67,55 @@ public class ProductoFormController implements Initializable {
 			Validator.createRegexValidator("Debe ser un número decimal", "\\d*\\.?\\d+", Severity.ERROR));
 		aceptarButton.disableProperty().bind(vl.invalidProperty());
 		ObservableList<String> opciones = FXCollections.observableArrayList(
-			"Abarrotera",
-			"Papeleria"
+			"Papeleria",
+			"Abarrotera"
 		);
 		segmentoBox.setItems(opciones);
 
 		// Opcional: Establecer un valor por defecto
 		segmentoBox.selectFirst();
 
+	}
+
+	@FXML
+	public void saveProducto(ActionEvent event){
+		producto = new Producto( 
+			nombreTextField.getText(), 
+			Double.parseDouble(costoTextField.getText()), 
+			Double.parseDouble(precioTextField.getText()),
+			Integer.parseInt(stockTextField.getText()),
+			segmentoBox.getSelectedIndex() + 1
+		);
+		Session.getSQLSession().getMapper(ProductoMapper.class).insertProducto(producto);
+		Session.getSQLSession().commit();
+		Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        	stage.close(); // Cerrar la ventana
+	}
+
+	public void setProducto (Producto producto) {
+		this.producto = producto;
+		if (producto != null){
+			nombreTextField.setText(producto.getNombre());
+			precioTextField.setText(producto.getPrecio() + "");
+			costoTextField.setText(producto.getCosto()+ "");
+			stockTextField.setText(producto.getStock() + "");
+			segmentoBox.selectIndex(producto.getSegmento_id() - 1 );
+			aceptarButton.setOnAction(event -> {
+				double costo = Double.parseDouble(costoTextField.getText()) ;
+				double precio = Double.parseDouble(precioTextField.getText());
+				int stock = Integer.parseInt(stockTextField.getText());
+				int segmento = segmentoBox.getSelectedIndex() + 1;
+				this.producto.setCosto(costo);
+				this.producto.setPrecio(precio);
+				this.producto.setStock(stock);
+				this.producto.setSegmento_id(segmento);
+				this.producto.setNombre(nombreTextField.getText());
+				Session.getSQLSession().getMapper(ProductoMapper.class).updateProducto(this.producto);
+				Session.getSQLSession().commit();
+				Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+				stage.close();
+			});
+		}
 	}
 
 }

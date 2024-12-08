@@ -14,7 +14,7 @@ import models.DetalleVenta;
 public interface VentaMapper {
     Venta getVentaById(int id);
     List<Venta> getAllVentas();
-    List<Venta> getVentaConDetalles(int id);
+    Venta getVentaConDetalles(int id);
     List<DetalleVenta> cargarDetalles();
     void insertVenta(Venta venta);
     void updateVenta(Venta venta);

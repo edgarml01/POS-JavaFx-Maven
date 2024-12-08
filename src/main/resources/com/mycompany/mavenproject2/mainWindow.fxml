@@ -106,6 +106,7 @@
                               </image></ImageView>
                         </graphic>
                      </MFXButton>
+                     <MFXButton fx:id="notificationButton" onAction="#toggleNotificationPopOver" prefHeight="25.0" prefWidth="50.0" />
                   </children>
                </HBox>
               </HBox>

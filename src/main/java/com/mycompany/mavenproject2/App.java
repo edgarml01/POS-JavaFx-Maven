@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.SQLException;
+import javafx.scene.image.Image;
 import javafx.scene.layout.Region;
 
 
@@ -20,8 +21,12 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException, SQLException {
-        scene = new Scene(loadFXML("login"));
+        scene = new Scene(loadFXML("secondary"));
         stage.setScene(scene);
+	Image icon = new Image(App.class.getResourceAsStream("/icon.png"));
+	stage.setTitle("POS CONALEP");
+
+	stage.getIcons().add(icon);
         stage.show();
     }
 
@@ -36,7 +41,6 @@ public class App extends Application {
     // Establecer el nuevo nodo raíz en la escena
     scene.setRoot(root);
 
-    // Cambiar las dimensiones de la escena si se proporcionan
     if (width > 0 && height > 0) {
         scene.getWindow().setWidth(width);
         scene.getWindow().setHeight(height);
@@ -49,8 +53,6 @@ public class App extends Application {
 
 	return root;
 	
-    // Verificar si el contenedor raíz tiene dimensiones preferidas
-
     }
     
 

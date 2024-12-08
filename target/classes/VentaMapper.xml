@@ -38,8 +38,8 @@
     <!-- Aquí estamos mapeando la colección de detalles asociados a esta venta -->
     <collection property="detalles" ofType="models.DetalleVenta">
         <id property="id" column="detalle_id"/>
-        <result property="ventaId" column="venta_id"/>
-        <result property="productoId" column="producto_id"/>
+        <result property="venta_id" column="venta_id"/>
+        <result property="producto_id" column="producto_id"/>
         <result property="cantidad" column="cantidad"/>
         <result property="precio_venta" column="precio_venta"/>
 	<association property="producto" javaType="Producto">

@@ -14,8 +14,8 @@ import org.apache.ibatis.annotations.Param;
 public interface ProductoMapper {
     List<Producto> getAllProductos();
     List<Producto> getProductosByNombre(@Param("nombre") String nombre);
-    Producto getProductoById();
-    Producto insertProducto(Producto producto);
+    Producto getProductoById(@Param("id") int id );
+    void insertProducto(Producto producto);
     void updateProducto(Producto producto);
     void deleteProducto(int id);
     void updateStock(@Param("id") int id, @Param("stock") int stock);

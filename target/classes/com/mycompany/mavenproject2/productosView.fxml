@@ -24,6 +24,7 @@
             <TableColumn fx:id="colNombre" prefWidth="97.0" text="Nombre" />
             <TableColumn fx:id="colPrecio" prefWidth="89.0" text="Precio" />
             <TableColumn fx:id="colCosto" prefWidth="65.0" text="Costo" />
+            <TableColumn fx:id="colStock" prefWidth="43.0" text="Stock" />
             <TableColumn fx:id="colSegmento" prefWidth="134.0" text="Segmento" />
             <TableColumn fx:id="colActions" prefWidth="300.0" text="Actions" />
          </columns>

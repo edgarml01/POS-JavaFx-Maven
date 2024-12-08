@@ -20,6 +20,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 /**
  * FXML Controller class
@@ -31,24 +33,22 @@ public class SecondaryController implements Initializable {
     @FXML
     private JFXButton btnProducts;
     
-    @FXML
-    private Button secondaryButton;
-    
-    @FXML
-    private JFXDrawer drawler;
     
     private Boolean b = true;
     
-    @FXML
-    private JFXHamburger hamburger;
     
     @FXML
     private BorderPane mainPane;
+	@FXML
+	private Label userLabel;
+	@FXML
+	private JFXButton logoutButton;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+	    //userLabel.setText(Session.getUser().getNombre());
     }    
     
     @FXML
@@ -61,6 +61,15 @@ public class SecondaryController implements Initializable {
 	    }
     }
     
+    @FXML
+    private void cargarStatsView(ActionEvent event) {
+        try {
+            loadFXMLIntoCenter("statsView");
+        } catch (Exception e) {
+            System.out.println("Error al cargar el archivo FXML: " + e.getMessage());
+        }
+        
+    }
     
     @FXML
     private void cargarUsuariosView(ActionEvent event) {
@@ -81,6 +90,15 @@ public class SecondaryController implements Initializable {
         }
         
     }
+    @FXML
+    private void cargarVentasView(ActionEvent event) {
+        try {
+            loadFXMLIntoCenter("ventasView");
+        } catch (Exception e) {
+            System.out.println("Error al cargar el archivo FXML: " + e.getMessage());
+        }
+        
+    }
     private void loadFXMLIntoCenter(String fxmlFile) {
         try {
             // Carga el archivo FXML
@@ -95,12 +113,13 @@ public class SecondaryController implements Initializable {
         }
     }
 
-    @FXML
-    private void logout() {
-    }
 
     private void initDrawler() {
         
     }
+
+	@FXML
+	private void cargarProdcutosView(MouseEvent event) {
+	}
 
 }
