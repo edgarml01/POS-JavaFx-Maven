@@ -39,13 +39,13 @@ public class ProductosViewController implements Initializable {
 	@FXML
 	private TableView<Producto> userTable;
 	@FXML
-	private TableColumn<?, ?> colId;
+	private TableColumn<Producto, Integer> colId;
 	@FXML
-	private TableColumn<?, ?> colNombre;
+	private TableColumn<Producto, String> colNombre;
 	@FXML
-	private TableColumn<?, ?> colPrecio;
+	private TableColumn<Producto, Double> colPrecio;
 	@FXML
-	private TableColumn<?, ?> colCosto;
+	private TableColumn<Producto, Double> colCosto;
 	@FXML
 	private TableColumn<Producto, Integer> colSegmento;
 	@FXML
@@ -63,15 +63,18 @@ public class ProductosViewController implements Initializable {
 	public void initialize(URL url, ResourceBundle rb) {
 		// TODO
 		try {
+			System.out.println("trono1");
 			if (userList.isEmpty()) {
 				userList.addAll(Session.getSQLSession().getMapper(ProductoMapper.class).getAllProductos());
 			}
+			System.out.println("trono2");
 			colId.setCellValueFactory(new PropertyValueFactory<>("id"));
 			colNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
 			colPrecio.setCellValueFactory(new PropertyValueFactory<>("precio"));
 			colCosto.setCellValueFactory(new PropertyValueFactory<>("costo"));
 			colStock.setCellValueFactory(new PropertyValueFactory<>("stock"));
 		        colSegmento.setCellValueFactory(new PropertyValueFactory<>("segmento_id"));
+			System.out.println("trono3");
 			colActions.setCellFactory(colum -> new TableCell<Producto, Void>(){
 				   private final Button btnEdit = new Button("Edit");
 				    private final Button btnDelete = new Button("Delete");
@@ -121,6 +124,7 @@ public class ProductosViewController implements Initializable {
 			
 			});
 
+			System.out.println("trono4");
 
 			colSegmento.setCellFactory(colum -> new TableCell<Producto, Integer>() {
 				@Override
@@ -137,6 +141,7 @@ public class ProductosViewController implements Initializable {
 
 
 			userTable.setItems(userList);
+			System.out.println("trono5");
 
 		} catch (Exception e) {
 			System.out.println("Eror en la carga de productos y no se por que ");

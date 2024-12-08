@@ -178,12 +178,6 @@ public class MainWindowController implements Initializable {
 		});
 		productos = session.getMapper(ProductoMapper.class).getAllProductos();
 		updatePanelProductos();
-		notificationContainer.setStyle("-fx-background-color: #f4f4f4; -fx-padding: 10;");
-		notificationPopOver.setContentNode(notificationContainer);
-		notificationPopOver.setArrowLocation(PopOver.ArrowLocation.TOP_CENTER);
-		notificationPopOver.setAutoHide(true);
-		addNotification("Holas");
-		addNotification("Holas por segunda vez ");
 		
 	}
 

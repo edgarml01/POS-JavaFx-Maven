@@ -50,7 +50,7 @@
             <cursor>
                <Cursor fx:constant="HAND" />
             </cursor></JFXButton>
-            <JFXButton fx:id="btnProducts" graphicTextGap="10" onAction="#cargarProdcutosView" prefHeight="65.0" prefWidth="229.0" style="-fx-background-color: #34495e; -fx-text-fill: white;" stylesheets="@style.css" text="Productos">
+            <JFXButton fx:id="btnProducts" graphicTextGap="10" onAction="#productView" prefHeight="65.0" prefWidth="229.0" style="-fx-background-color: #34495e; -fx-text-fill: white;" stylesheets="@style.css" text="Productos">
             <graphic>
                <ImageView fitHeight="43.0" fitWidth="47.0" pickOnBounds="true" smooth="false">
                   <image>

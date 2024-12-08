@@ -67,16 +67,16 @@
                     <MFXButton fx:id="button2" maxHeight="40.0" maxWidth="60.0" minHeight="40.0" minWidth="60.0" onAction="#button2" prefHeight="40.0" prefWidth="60.0" text="2" GridPane.columnIndex="1" />
                     <MFXButton maxHeight="40.0" maxWidth="60.0" minHeight="40.0" minWidth="60.0" onAction="#button3" prefHeight="40.0" prefWidth="60.0" text="3" GridPane.columnIndex="2" />
                     <MFXButton maxHeight="40.0" maxWidth="60.0" minHeight="40.0" minWidth="60.0" onAction="#button4" prefHeight="40.0" prefWidth="60.0" text="4" GridPane.rowIndex="1" />
-                    <MFXButton fx:id="finalizarButton" maxHeight="40.0" maxWidth="66.0" minHeight="40.0" minWidth="60.0" onAction="#finalizarVenta" prefHeight="40.0" prefWidth="66.0" text="Finalizar" GridPane.columnIndex="3" />
-                    <MFXButton fx:id="eliminarButton" maxHeight="40.0" maxWidth="69.0" minHeight="40.0" minWidth="60.0" onAction="#deleteFromCarrito" prefHeight="40.0" prefWidth="69.0" text="Eliminar" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                    <MFXButton fx:id="finalizarButton" maxHeight="40.0" maxWidth="77.0" minHeight="40.0" minWidth="60.0" onAction="#finalizarVenta" prefHeight="40.0" prefWidth="77.0" style="-fx-background-color: #9ce79a;" text="Finalizar" GridPane.columnIndex="3" />
+                    <MFXButton fx:id="eliminarButton" maxHeight="40.0" maxWidth="75.0" minHeight="40.0" minWidth="60.0" onAction="#deleteFromCarrito" prefHeight="40.0" prefWidth="75.0" style="-fx-background-color: #f6816c;" text="Eliminar" GridPane.columnIndex="3" GridPane.rowIndex="1" />
                     <MFXButton maxHeight="40.0" maxWidth="60.0" minHeight="40.0" minWidth="60.0" onAction="#button7" prefHeight="40.0" prefWidth="60.0" text="7" GridPane.rowIndex="2" />
                     <MFXButton maxHeight="40.0" maxWidth="60.0" minHeight="40.0" minWidth="60.0" onAction="#button8" onDragDetected="#button8" prefHeight="40.0" prefWidth="60.0" text="8" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                     <MFXButton fx:id="button9" maxHeight="40.0" maxWidth="60.0" minHeight="40.0" minWidth="60.0" onAction="#button9" prefHeight="40.0" prefWidth="60.0" text="9" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                    <MFXButton fx:id="buttonAdd" maxHeight="40.0" maxWidth="60.0" minHeight="40.0" minWidth="60.0" onAction="#addProducto" prefHeight="40.0" prefWidth="60.0" text="Agregar" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                    <MFXButton fx:id="buttonAdd" maxHeight="40.0" maxWidth="77.0" minHeight="40.0" minWidth="60.0" onAction="#addProducto" prefHeight="40.0" prefWidth="77.0" style="-fx-background-color: #a1c8ea;" text="Agregar" GridPane.columnIndex="3" GridPane.rowIndex="2" />
                     <MFXButton maxHeight="40.0" maxWidth="60.0" minHeight="40.0" minWidth="60.0" prefHeight="40.0" prefWidth="60.0" text="+" GridPane.rowIndex="3" />
                     <MFXButton fx:id="button0" maxHeight="40.0" maxWidth="60.0" minHeight="40.0" minWidth="60.0" onAction="#button0" prefHeight="40.0" prefWidth="60.0" text="0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                     <MFXButton maxHeight="40.0" maxWidth="60.0" minHeight="40.0" minWidth="60.0" prefHeight="40.0" prefWidth="60.0" text="-" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-                    <MFXButton fx:id="buttonDel" maxHeight="40.0" maxWidth="60.0" minHeight="40.0" minWidth="60.0" onAction="#buttonDel" prefHeight="40.0" prefWidth="60.0" text="DEL" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                    <MFXButton fx:id="buttonDel" maxHeight="40.0" maxWidth="75.0" minHeight="40.0" minWidth="60.0" onAction="#buttonDel" prefHeight="40.0" prefWidth="75.0" text="DEL" GridPane.columnIndex="3" GridPane.rowIndex="3" />
                     <MFXButton fx:id="button1" maxHeight="40.0" maxWidth="60.0" minHeight="40.0" minWidth="60.0" onAction="#button1" prefHeight="40.0" prefWidth="60.0" text="1" />
                 </children>
             </GridPane>
@@ -92,13 +92,16 @@
                <MFXButton fx:id="searchButton" onAction="#buscarProductos" text="🔍" />
                <HBox alignment="TOP_RIGHT" prefHeight="25.0" prefWidth="283.0">
                   <children>
-                     <MFXButton fx:id="adminButton" onAction="#switchToDashboard" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: celeste;" text="Administrar" />
+                     <MFXButton fx:id="adminButton" onAction="#switchToDashboard" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: #6ca3f6;" text="Administrar" />
                      <Label fx:id="userLabel" prefHeight="17.0" prefWidth="76.0" text="Label">
                         <HBox.margin>
-                           <Insets left="18.0" top="5.0" />
+                           <Insets left="18.0" right="9.0" top="5.0" />
                         </HBox.margin>
+                        <font>
+                           <Font name="System Bold" size="17.0" />
+                        </font>
                      </Label>
-                     <MFXButton fx:id="logoutButton" onAction="#logout" style="-fx-background-color: red;" text="Logout" textFill="#f5e6e6">
+                     <MFXButton fx:id="logoutButton" onAction="#logout" prefHeight="36.0" prefWidth="94.0" style="-fx-background-color: red;" text="Logout" textFill="#f5e6e6">
                         <graphic>
                            <ImageView fitHeight="29.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                               <image>
@@ -106,7 +109,6 @@
                               </image></ImageView>
                         </graphic>
                      </MFXButton>
-                     <MFXButton fx:id="notificationButton" onAction="#toggleNotificationPopOver" prefHeight="25.0" prefWidth="50.0" />
                   </children>
                </HBox>
               </HBox>

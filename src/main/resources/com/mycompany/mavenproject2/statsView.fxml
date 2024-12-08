@@ -14,7 +14,7 @@
    <content>
       <VBox prefHeight="916.0" prefWidth="729.0">
          <children>
-            <HBox prefHeight="419.0" prefWidth="729.0">
+            <HBox prefHeight="419.0" prefWidth="729.0" VBox.vgrow="ALWAYS">
                <children>
                   <PieChart fx:id="graficaPay" prefHeight="309.0" prefWidth="729.0" />
                   <BarChart fx:id="graficaBarra" prefHeight="379.0" prefWidth="729.0">

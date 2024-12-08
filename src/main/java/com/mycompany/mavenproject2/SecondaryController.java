@@ -48,7 +48,8 @@ public class SecondaryController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-	    //userLabel.setText(Session.getUser().getNombre());
+	    userLabel.setText(Session.getUser().getNombre());
+            loadFXMLIntoCenter("productosView");
     }    
     
     @FXML
@@ -80,14 +81,17 @@ public class SecondaryController implements Initializable {
         }
         
     }
-    
-    @FXML
-    private void cargarProdcutosView(ActionEvent event) {
+   @FXML
+   private void productView(){
         try {
             loadFXMLIntoCenter("productosView");
         } catch (Exception e) {
             System.out.println("Error al cargar el archivo FXML: " + e.getMessage());
         }
+   
+   }
+    @FXML
+    private void cargarProdcutosView() {
         
     }
     @FXML

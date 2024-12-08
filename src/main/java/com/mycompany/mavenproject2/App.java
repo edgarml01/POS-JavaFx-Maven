@@ -21,7 +21,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException, SQLException {
-        scene = new Scene(loadFXML("secondary"));
+        scene = new Scene(loadFXML("login"));
         stage.setScene(scene);
 	Image icon = new Image(App.class.getResourceAsStream("/icon.png"));
 	stage.setTitle("POS CONALEP");
