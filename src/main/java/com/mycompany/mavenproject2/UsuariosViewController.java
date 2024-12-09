@@ -156,6 +156,8 @@ public class UsuariosViewController implements Initializable {
 				session.getMapper(UserMapper.class).insertUser(us.getUser());
 			}
 
+			userList.clear();
+			userList.addAll(session.getMapper(UserMapper.class).getAllUsers());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -183,6 +185,8 @@ public class UsuariosViewController implements Initializable {
 			// Mostrar la ventana
 			stage.showAndWait(); // Espera hasta que se cierre la ventana
 
+			userList.clear();
+			userList.addAll(session.getMapper(UserMapper.class).getAllUsers());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

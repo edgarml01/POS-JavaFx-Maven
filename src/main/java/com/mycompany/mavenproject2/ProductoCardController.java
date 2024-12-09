@@ -45,7 +45,7 @@ public class ProductoCardController implements Initializable {
 		this.producto = model;
 		prodcutoButton.setOnMouseClicked(
 			(event) -> {
-				controller.hadleClick(model);
+				controller.hadleClick(model , maiCard);
 			}
 		
 		);

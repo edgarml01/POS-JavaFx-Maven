@@ -180,6 +180,8 @@ public class ProductosViewController implements Initializable {
 
 			// Mostrar la ventana
 			stage.showAndWait(); // Espera hasta que se cierre la ventana
+			userList.clear();
+			userList.addAll(Session.getSQLSession().getMapper(ProductoMapper.class).getAllProductos());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -245,6 +247,8 @@ public class ProductosViewController implements Initializable {
 
 			// Mostrar la ventana
 			stage.showAndWait(); // Espera hasta que se cierre la ventana
+			userList.clear();
+			userList.addAll(Session.getSQLSession().getMapper(ProductoMapper.class).getAllProductos());
 
 		} catch (Exception e) {
 			e.printStackTrace();

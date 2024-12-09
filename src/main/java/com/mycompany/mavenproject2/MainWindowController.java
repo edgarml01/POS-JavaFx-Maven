@@ -51,7 +51,9 @@ public class MainWindowController implements Initializable {
 	private double res = 0;
 	
 	private SqlSession session = Session.getSQLSession();
-	
+
+	private VBox cardSelected;
+
 	private List<Producto> productos;
 	
 	private ObservableList<Producto> carrito;
@@ -281,6 +283,8 @@ public class MainWindowController implements Initializable {
 			fistCantidad = true;
 			instructionLabel.setText("Seleccione un producto");
 			cantidadLabel.setText("");
+			selectedProducto = null;
+			cardSelected.setStyle(null);
 			
 			return;
 		}
@@ -304,12 +308,22 @@ public class MainWindowController implements Initializable {
 		instructionLabel.setText("Seleccione un producto");
 		cantidadLabel.setText(" ");
 		cantidadStr = "";
+		cardSelected.setStyle(null);
 	}
 	
-	public void hadleClick(Producto producto) {
+	public void hadleClick(Producto producto, VBox card ) {
 		selectedProducto = producto;
 		instructionLabel.setText("Ingrese la cantidad del producto");
+		if (cardSelected != null){
+			cardSelected.setStyle(null);
+		}
+		cardSelected = card;
+		cantidadStr = "";
+		cardSelected.setStyle("-fx-background-color: #b9eec0;");
 		cantidadLabel.setText("Cantidad: " + 1);
+	}
+	private void selectCard(){
+	
 	}
 	
 	@FXML
@@ -372,6 +386,20 @@ public class MainWindowController implements Initializable {
 	private void button9() {
 		fistCantidad = false;
 		cantidadStr += 9;
+		cantidadLabel.setText("Cantidad: " + cantidadStr);
+	}
+	@FXML
+	private void buttonAdd() {
+		if (cantidadStr.isEmpty()) cantidadStr = "1";
+		fistCantidad = false;
+		cantidadStr = (Integer.parseInt(cantidadStr) + 1) + "";
+		cantidadLabel.setText("Cantidad: " + cantidadStr);
+	}
+	@FXML
+	private void buttonMenos() {
+		if (cantidadStr.isEmpty())return;
+		fistCantidad = false;
+		if (Integer.parseInt(cantidadStr) != 1)cantidadStr = (Integer.parseInt(cantidadStr) - 1) + "";
 		cantidadLabel.setText("Cantidad: " + cantidadStr);
 	}
 	
