@@ -51,7 +51,7 @@
       <HBox alignment="CENTER" prefHeight="52.0" prefWidth="377.0">
          <children>
             <MFXButton fx:id="aceptarButton" onAction="#saveUser" prefHeight="25.0" prefWidth="64.0" style="-fx-background-color: light-green;" text="Aceptar" />
-            <MFXButton prefHeight="25.0" prefWidth="76.0" rippleColor="#e10a0a" rippleRadius="41.0" style="-fx-background-color: red;" text="Cancelar" textFill="#f8f6f6">
+            <MFXButton onAction="#cerrarForm" prefHeight="25.0" prefWidth="76.0" rippleColor="#e10a0a" rippleRadius="41.0" style="-fx-background-color: red;" text="Cancelar" textFill="#f8f6f6">
                <HBox.margin>
                   <Insets left="20.0" />
                </HBox.margin>

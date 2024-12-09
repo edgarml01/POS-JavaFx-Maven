@@ -91,6 +91,11 @@ public class ProductoFormController implements Initializable {
 		Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         	stage.close(); // Cerrar la ventana
 	}
+	@FXML
+	public void cerrarForm(ActionEvent event){
+		Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        	stage.close(); // Cerrar la ventana
+	}
 
 	public void setProducto (Producto producto) {
 		this.producto = producto;

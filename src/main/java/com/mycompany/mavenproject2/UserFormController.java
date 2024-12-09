@@ -83,6 +83,12 @@ public class UserFormController implements Initializable {
 		Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         	stage.close(); // Cerrar la ventana
 	}
+
+	@FXML
+	public void cerrarForm(ActionEvent event){
+		Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        	stage.close(); // Cerrar la ventana
+	}
 	public void setUser(User user){
 		
 		System.out.println(user);
